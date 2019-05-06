@@ -1,0 +1,304 @@
+<!-- <script>
+
+var expanded = false;
+
+function showCheckboxes() {
+  var checkboxes = document.getElementById("checkboxes");
+  if (!expanded) {
+    checkboxes.style.display = "block";
+    expanded = true;
+  } else {
+    checkboxes.style.display = "none";
+    expanded = false;
+  }
+}
+</script>
+<style>
+.multiselect {
+  width: 200px;
+}
+
+.selectBox {
+  position: relative;
+}
+
+.selectBox select {
+  width: 100%;
+  font-weight: bold;
+}
+
+.overSelect {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+#checkboxes {
+  display: none;
+  border: 1px #dadada solid;
+}
+
+#checkboxes label {
+  display: block;
+}
+
+#checkboxes label:hover {
+  background-color: #1e90ff;
+}
+</style> -->
+<style>
+
+/* .md-text{
+border: 1px solid darkgray;
+    border-radius: 17px;
+    background-color: whitesmoke;
+
+} */
+span{
+display: flex;
+}
+
+
+md-tooltip.md-show {
+	color: white !important;
+	-webkit-transition: all .4s cubic-bezier(.25, .8, .25, 1);
+	transition: all .4s cubic-bezier(.25, .8, .25, 1);
+	pointer-events: auto;
+	
+	
+}
+md-tooltip1{
+
+ display: inline-block;
+ 
+  margin: auto;
+  text-align: center;
+}
+.md-show {
+	visibility: visible;
+	color: white !important;
+}
+</style>
+
+
+
+
+
+
+
+<div class="container">
+	<form name="notification" novalidate autocomplete="off" ng-init="init()">
+
+		<div class="panel panel-deva">
+			<div class="panel-heading" style="font-size: 15px;">Notifications
+
+			</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-sm-6" >
+						<div class="col-sm-12">
+							<center>Send Notifications</center>
+						</div>
+
+						</br> </br> </br>
+						<div class="col-sm-6">
+							<center>Select Recipient</center>
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+
+								<select class="form-control" name="recipient"
+									ng-model="msg.recipient" data-style="btn-primary"
+									ng-change="msgSendTo()" required>
+									<option value="">Please Select</option>
+									<option value="0">All</option>
+									<option value="1">All Client Contacts</option>
+									<option value="2">Client Contact</option>
+									<option value="3">All Site Contacts</option>
+									<option value="4">Site Contact</option>
+								</select>
+								
+						<!-- 		<span
+							ng-show="newClient.recipient.$dirty && newClient.recipient.$invalid">
+							<span ng-show="newClient.recipient.$error.required"
+							class="error">Please Enter Name</span>
+							<span ng-show="newClient.recipient.$error.maxlength"
+							class="error">Enter Maximum 40 char</span>
+							
+						</span> -->
+								
+								
+								  <span
+									ng-show="notification.recipient.$dirty && notification.recipient.$invalid">
+									<span ng-show="notification.recipient.$error.required"
+									class="error">Please Select Activity</span>
+								</span> 
+							</div>
+						</div>
+						</br>
+						<!-- <div class="col-sm-6">
+						</div> -->
+						<div class="col-sm-6"></div>
+						<div class="col-sm-6">
+
+
+
+<div class="md-padding selectdemoOptionGroups" ng-cloak="" ng-show="msg.recipient==2">
+									<div>
+										<div layout="row" style="    margin-top: -43px;    margin-left: -17px;    width: 115%;">
+
+											<md-input-container Style=" width: 100%;"> <label></label>
+											<md-select ng-model="msg.clientID" multiple="" ng-required="msg.recipient==2"> <md-option
+												ng-value="topping.clientID" ng-repeat="topping in toppings ">{{topping.clientName}}</md-option>
+
+											</md-select> </md-input-container>
+										</div>
+									</div>
+								</div>
+								
+								
+								<div class="md-padding selectdemoOptionGroups" ng-cloak="" ng-show="msg.recipient==4">
+									<div>
+										<div layout="row" style="    margin-top: -43px;    margin-left: -17px;    width: 115%;">
+
+											<md-input-container Style=" width: 100%;"> <label></label>
+											<md-select ng-model="msg.siteID" multiple="" ng-required="msg.recipient==4"> <md-option
+												ng-value="topping.siteID" ng-repeat="topping in toppings1 " ng-show="topping.contactPerson!=null">{{topping.contactPerson}}</md-option>
+
+											</md-select> </md-input-container>
+										</div>
+									</div>
+								</div>
+								
+					<!-- 		<div class="form-group"
+								ng-show="msg.recipient==2||msg.recipient==4">
+								
+								<select class="form-control" name="clientID"
+									ng-show="msg.recipient==2" ng-model="msg.clientID"
+									data-style="btn-primary" ng-option="client in clientlist"
+									required>
+									<option value="">Please Select</option>
+
+
+									<option value="{{ client.clientID }}"
+										ng-repeat="client in clientlist">{{ client.clientName
+										}}</option>
+
+								</select> <select class="form-control" name="siteID"
+									ng-show="msg.recipient==4" ng-model="msg.siteID"
+									data-style="btn-primary" ng-option="client in clientlist"
+									required>
+									<option value="">Please Select</option>
+
+
+									<option value="{{ site.siteID }}" ng-repeat="site in sitelist"
+										ng-if="site.contactPerson!=null">{{
+										site.contactPerson }}</option>
+
+								</select> <span
+									ng-show="scheduleVisit.activity.$dirty && newEmp.activity.$invalid">
+									<span ng-show="scheduleVisit.activity.$error.required"
+									class="error">Please Select Activity</span>
+								</span>
+							</div> -->
+						</div>
+
+
+						<div class="col-sm-6">
+							<center>Meassage</center>
+						</div>
+						<div class="col-sm-6" >
+						
+							<div class="form-group">
+								<textarea type="text" rows="4" class="form-control input-sm"
+									ng-disabled="statusOfDisabeled"  name="message"
+									maxlength="161" ng-maxlength="160" ng-model="msg.message"
+									required> </textarea>
+								<span
+									ng-show="notification.message.$dirty && notification.message.$invalid">
+									<span ng-show="notification.message.$error.required"
+									class="error">Write a message</span> <span
+									ng-show="notification.message.$error.maxlength" class="error">Maximum
+										160 char</span>
+								</span>
+								
+							</div>
+						</div>
+						<div class="col-sm-12">
+							<center>
+								<button type="button" class="btn btn-deva" data-dismiss="modal"
+									ng-click="sendMsg()" style="min-width: 18%;"  ng-disabled=" notification.$invalid">Send</button>
+							</center>
+						</div>
+					</div>
+
+
+					<div class="col-sm-6" style="border-left: 1px solid darkgray;    min-height: 276px;">
+						<center>Notifications History</center>
+						<table dt-options="vm.dtOptions" datatable="ng"
+							dt-instance="vm.dtInstance"
+							class="table table-striped table-bordered" id="dataTable1"
+							width="99%" cellspacing="0" style="align-content: center;">
+							<thead>
+								<tr align="center" style="background: #e6e6e6; color: black;">
+									<th>Date</th>
+									<th>Recipient</th>
+									<th>Message</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr align="center" ng-repeat="notify in notifications">
+
+									<!--   <td><span ng-bind="$index+1"></span></td> -->
+									<td><span style="    display: contents;"
+										ng-bind="notify.createdDate | date:'dd-MMM-yyyy'"></span></td>
+									<td><span style="       margin-left: 70px;" ng-bind="notify.count"><md-tooltip>
+											<span class="md-tooltip1">{{notify.name}}</span></md-tooltip></span></td>
+									<td><center><span style="    display: contents;" ng-bind="notify.message"></span></center></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					
+				</div>
+
+
+
+ 			</div>
+		</div>
+
+	</form>
+</div>
+
+
+<!--pop up for client added  -->
+<div id="sendNotifications" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-sm">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header header-color">
+
+				<h4 class="modal-title" style="text-align: center;">Notifications</h4>
+			</div>
+			<div class="modal-body">
+				<center>Notification sent successfully</center>
+			</div>
+			<div class="modal-footer">
+				<button type="button" ng-click="realode()"
+					class="btn btn-default popupbtn" data-dismiss="modal">Ok</button>
+
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+<!--
+Copyright 2018 Google LLC. All Rights Reserved. 
+Use of this source code is governed by an MIT-style license that can be found
+in the LICENSE file at http://material.angularjs.org/HEAD/license.
+-->

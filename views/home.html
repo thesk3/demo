@@ -1,0 +1,329 @@
+
+<script>
+	/* When the user clicks on the button, 
+	 toggle between hiding and showing the dropdown content */
+	function myFunction() {
+		document.getElementById("myDropdown").classList.toggle("show");
+	}
+
+	// Close the dropdown if the user clicks outside of it
+	window.onclick = function(event) {
+		if (!event.target.matches('.dropbtn')) {
+			var dropdowns = document.getElementsByClassName("dropdown-content");
+			var i;
+			for (i = 0; i < dropdowns.length; i++) {
+				var openDropdown = dropdowns[i];
+				if (openDropdown.classList.contains('show')) {
+					openDropdown.classList.remove('show');
+				}
+			}
+		}
+	}
+</script>
+<style>
+@media screen and (max-width: 770px) {
+	.response {
+		margin-top: 52px;
+	}
+	.responseicon {
+		margin-left: 9px;
+	}
+}
+
+	
+
+@media screen and (min-width: 770px) {
+	
+	.responseicon {
+		margin-left: 9px;
+	}
+}
+
+	
+
+</style>
+<style>
+.dropbtn {
+	background-color: #4cd96400;
+	color: white;
+	padding: 16px;
+	font-size: 16px;
+	border: none;
+	cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+	background-color: #4cd96400;
+}
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f1f1f1;
+	min-width: 160px;
+	overflow: auto;
+	 margin-top: 58px;
+	 margin-left: -90px; 
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+	
+}
+
+.dropdown-content a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+}
+
+#myDropdown a:hover {
+	background-color: #ddd;
+}
+
+.show {
+	display: block;
+}
+
+@media screen and (max-width: 748px) {
+	.responseicon {
+		margin-left: 9px;
+	}
+	.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f1f1f1;
+	min-width: 160px;
+	overflow: auto;
+		 margin-top: 0px;
+	 margin-left: 0px; 
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+	
+}
+}
+</style>
+<nav class="navbar navbar-default ">
+	<div class="">
+		<div class="navbar-header">
+			<a class="navbar-brand"> <img src="images/logo.jpg" style="height: 56px;"
+				style="width: 100%;">
+			</a>
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#myNavbar">
+				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+		</div>
+		<div class="collapse navbar-collapse" id="myNavbar">
+			<ul class="nav navbar-nav navbar-left">
+
+				<a ui-sref="home.dashboard"> <i class="fa fa-home"
+					class="homeIcon responseicon"
+					style="color: white; font-size: 29px; float: left; padding-top: 18px; padding-right: 14px; margin-left: 28px;"></i></a>
+
+
+				<li ui-sref-active="active" ><a
+					ui-sref="home.myprofile"	> My Profile </a> <!--   <ul class="dropdown-menu">
+              <li ui-sref-active="active">
+                  <a class="fa fa-users" ui-sref="home.exEmployeePool"> Ex Employees</a>
+                </li>   
+          </ul> --></li>
+
+				<li ui-sref-active="active"><a ui-sref="home.partnerProfile">
+						Partner Profile </a></li>
+				<li ui-sref-active="active"><a ui-sref="home.shortlistedProfile">
+					Shortlisted Profiles </a></li>
+				<li ui-sref-active="active"><a >
+					Messages </a></li>
+
+				<li ui-sref-active="active"><a >
+					Membership Plans </a></li>
+
+			
+            
+        </ul>
+					
+
+
+
+
+
+
+
+				<!--    <li ui-sref-active="active">
+            <a class="" >
+              <i class="fa fa-location-arrow"></i> Events </a>
+          </li>
+          <li ui-sref-active="active">
+              <a class="" >
+                <i class="fa fa-book"></i> Policy </a>
+            </li> -->
+
+				<!--  <li ui-sref-active="active">
+          <a class="" ui-sref="home.dummy">
+            <i class=""></i> dummy </a>
+        </li> -->
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<!--   <li class="dropdown navbar-right" ng-class="{active : activeMenu === 'Profile'}">
+          <a class="dropdown-toggle" data-toggle="dropdown" ng-click="activeMenu = 'Profile'">
+            <i class="fa fa-user"></i> Ankit
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu ">
+              <li>
+                  <a class="fa fa-key" data-toggle="modal" data-target="#changePwd" > Change Password</a>
+                </li>
+            <li>
+              <a class="fa fa-sign-out" href="#">  Logout</a>
+            </li>          
+          </ul>
+        </li> -->
+        <!-- 
+         <li  class="dropdown navbar-right">
+           <a class="fa fa-sign-out" style="    font-size: 24px;
+   " ng-click="logout()"><span style="font-size=12px; cursor: pointer; font-family: 'Open Sans', sans-serif !important;"> </span></a>
+       <ul class="dropdown-menu ">
+              <li>
+                  <a  data-toggle="modal" data-target="#changePwd" > Change Password</a>
+                </li>
+            
+        </ul>
+        </li>
+         -->
+				<li class="dropdown navbar-right">
+					<div class="dropdown">
+						<li onclick="myFunction()" class="dropbtn fas fa-sign-out-alt" style="    font-size: 21px;     top: 4px;
+						
+   "><md-tooltip> <span class="">Logout</span></md-tooltip> </li>
+						<div id="myDropdown" class="dropdown-content">
+						 <a  data-toggle="modal" data-target="#changePwd" > Change Password</a>
+							<a  ng-click="logout()">Logout</a> 
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+<div ui-view></div>
+<div class="footer" >
+	<span >Copyright &copy; Deva Consultancy Services Pvt. Ltd.</span>
+</div>
+
+
+
+<!-- Modal for password change -->
+<div id="changePwd" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-sm">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header header-color">
+				<h4 class="modal-title" >Change
+					Password</h4>
+			</div>
+			<div class="modal-body">
+				<form name="changePassword" novalidate autocomplete="off">
+					<label>Old Password</label>
+					<div class="form-group">
+						<div class="input-group input-group-sm">
+							<span class="input-group-addon"> <i class="fa fa-lock"></i>
+							</span> <input type="password" class="form-control" name="password"
+								ng-model="newPass.password" required>
+						</div>
+					</div>
+					<label>New Password</label>
+					<div class="form-group">
+						<div class="input-group input-group-sm">
+							<span class="input-group-addon"> <i class="fa fa-lock"></i>
+							</span> <input type="password" class="form-control"
+								ng-model="newPass.newPassword" name="newPassword"
+								ng-minlength="6" required>
+						</div>
+						<span
+							ng-show="changePassword.newPassword.$touched && changePassword.newPassword.$invalid">
+							<span class="error"
+							ng-show="changePassword.newPassword.$error.required ">Please
+								enter password</span> <span class="error"
+							ng-show="changePassword.newPassword.$error.minlength ">Passwords
+								must contain at least six characters,</span>
+						</span>
+						<!-- ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/" -->
+						<!-- ng-disabled="newPassword.$invalid || newPass.password !=newPass.confirmPassword"  -->
+					</div>
+					<label>Confirm Password</label>
+					<div class="form-group">
+						<div class="input-group input-group-sm">
+							<span class="input-group-addon"> <i class="fa fa-lock"></i>
+							</span> <input type="password" class="form-control"
+								name="confirmPassword" ng-model="newPass.confirmPassword"
+								ng-pattern="newPass.newPassword" required>
+						</div>
+						<span
+							ng-show="changePassword.confirmPassword.$touched && changePassword.confirmPassword.$invalid">
+							<span class="error"
+							ng-show="newPass.newPassword != newPass.confirmPassword">Your
+								passwords must match.</span>
+						</span>
+
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-deva"
+					ng-disabled="changePassword.$invalid || newPass.newPassword != newPass.confirmPassword"
+					ng-click="updatePassword()">Submit</button>
+
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<!-- Modal for Salary slip generated successfully  -->
+<div id="updatePasswordSuccess" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-sm">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header header-color">
+
+				<h4 class="modal-title" style="text-align: center;">Success</h4>
+			</div>
+			<div class="modal-body" style="text-align: center;">
+				<p>Updated password successfully</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-deva" data-dismiss="modal">Ok</button>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<!-- Modal for error salary slip generating  -->
+<div id="updatePasswordError" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-sm">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header header-color">
+
+				<h4 class="modal-title" style="text-align: center;">Error</h4>
+			</div>
+			<div class="modal-body" style="text-align: center;">
+				<p>{{msg}}</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" ng-click="relod();" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>

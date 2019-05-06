@@ -1,0 +1,301 @@
+<style>
+  .row {
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+
+  md-select-value>span {
+    color: #737373bf !important;
+
+  }
+
+  md-select {
+    display: flex;
+    margin: 0px 0px 0px !important;
+  }
+</style>
+<div class="container-fluid">
+  <div class="panel" style="min-height: 427px;border-radius: 11px;    padding: 14px;">
+    <div class="panel-heading"
+      style="    background-color: var(--main-primary-color);color: white; text-align: center;">Partner Profile
+      Preference
+
+    </div>
+    <div class="panel-body">
+      <form name="partnerProfileFrom">
+        <div class="row">
+          <div class="col-sm-8">
+            <div class="row">
+              <div class="col-sm-1" style="    padding: 7px;">Age</div>
+              <div class="col-sm-6">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div id="slider-range"></div>
+                  </div>
+                </div>
+                <div class="row slider-labels">
+                  <div class="col-xs-6 caption">
+                    <strong>From:</strong> <span id="slider-range-value1"></span>
+                  </div>
+                  <div class="col-xs-6 text-right caption">
+                    <strong>To:</strong> <span id="slider-range-value2"></span>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <form>
+                      <input type="hidden" name="ageFrom" value="" ng-model="partnerProfile.ageFrom">
+                      <input type="hidden" name="ageTo" value="" ng-model="partnerProfile.ageTo">
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-3">
+
+
+              </div>
+
+            </div>
+
+
+             <div class="row">
+              <div class="col-sm-1" style="    padding: 3px;">Height</div>
+              <div class="col-sm-6">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div id="slider-range1"></div>
+                  </div>
+                </div>
+                <div class="row slider-labels">
+                  <div class="col-xs-6 caption">
+                    <strong>Min:</strong> <span id="slider-range-value11"></span>
+                  </div>
+                  <div class="col-xs-6 text-right caption">
+                    <strong>Max:</strong> <span id="slider-range-value21"></span>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <form>
+                      <input type="hidden" name="heightFrom" value="" ng-model="partnerProfile.heightFrom">
+                      <input type="hidden" name="heightTo" value="" ng-model="partnerProfile.heightTo">
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+            </div> 
+
+
+
+
+
+            <div class="row">
+              <div class="col-sm-1"></div>
+              <div class="col-sm-5">
+                <md-input-container class="md-block" flex-gt-sm style="width: 104%;">
+                  <label>Marital Status</label>
+                  <md-select style="width: auto;" name="maritalStatus" required ng-model="partnerProfile.maritalStatus">
+                    <md-option value="married">
+                      Married
+                    </md-option>
+                    <md-option value="Nevere married">
+                      Nevere Married
+                    </md-option>
+
+                  </md-select>
+                  <div ng-messages="partnerProfileFrom.maritalStatus.$error" role="alert">
+                    <div ng-message-exp="['required']">
+                      Please select maritalStatus
+                    </div>
+                  </div>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm style="width: 104%;">
+                  <label style=" color: #737373bf !important;">Religion</label>
+                  <md-select style="width: auto;" required name="religion" ng-model="partnerProfile.religion">
+                    <md-option ng-repeat="religion in religionList" value="{{religion.name}}">
+                      {{religion.name}}
+                    </md-option>
+                  </md-select>
+                  <div ng-messages="partnerProfileFrom.religion.$error" role="alert">
+                    <div ng-message-exp="['required']">
+                      plaese select
+                    </div>
+                  </div>
+                </md-input-container>
+
+
+                <md-input-container class="md-block" flex-gt-sm style="width: 104%;">
+                  <label style=" color: #737373bf !important;">Caste</label>
+                  <md-select style="width: auto;" required name="caste" ng-model="partnerProfile.caste">
+                    <md-option ng-repeat="cast in castList" value="{{cast.name}}">
+                      {{cast.name}}
+                    </md-option>
+
+                  </md-select>
+                  <div ng-messages="partnerProfileFrom.caste.$error" role="alert">
+                    <div ng-message-exp="['required']">
+                      plaese select
+                    </div>
+                  </div>
+                </md-input-container>
+
+
+                <md-input-container class="md-block" flex-gt-sm style="width: 104%;">
+                  <label style=" color: #737373bf !important;">Community</label>
+                  <md-select style="width: auto;" required name="community" ng-model="partnerProfile.community">
+                    <md-option ng-repeat="community in communityList" value="{{community.name}}">
+                      {{community.name}}
+                    </md-option>
+                  </md-select>
+                  <div ng-messages="partnerProfileFrom.community.$error" role="alert">
+                    <div ng-message-exp="['required']">
+                      plaese select
+                    </div>
+                  </div>
+                </md-input-container>
+
+
+                <md-input-container class="md-block" flex-gt-sm style="width: 104%;">
+                  <label style=" color: #161111bf !important;">Mother Tongue
+
+                  </label>
+                  <md-select style="width: auto;" required name="motherTongue" ng-model="partnerProfile.motherTongue">
+                    <md-option ng-repeat="languages in languagesList" value="{{languages.name}}">
+                      {{languages.name}}
+                    </md-option>
+
+                  </md-select>
+                  <div ng-messages="partnerProfileFrom.motherTongue.$error" role="alert">
+                    <div ng-message-exp="['required']">
+                      plaese select
+                    </div>
+                  </div>
+                </md-input-container>
+              </div>
+
+
+              <!-- ------------------------------ 2nd part of  partner profile ----------------------------- -->
+              <div class="col-sm-1"></div>
+              <div class="col-sm-5">
+
+                <md-input-container class="md-block" flex-gt-sm style="width: 104%;">
+                  <label style=" color: #737373bf !important;">Education</label>
+                  <md-select style="width: auto;" required name="education" ng-model="partnerProfile.education">
+                    <md-option value="BSC"> BSC </md-option>
+                    <md-option value="Eng"> Eng </md-option>
+                    <md-option value="BCOM"> BCOM </md-option>
+                    <md-option value="BA"> BA </md-option>
+
+                  </md-select>
+                  <div ng-messages="partnerProfileFrom.education.$error" role="alert">
+                    <div ng-message-exp="['required']">
+                      plaese select
+                    </div>
+                  </div>
+                </md-input-container>
+
+                <md-input-container class="md-block" flex-gt-sm style="width: 104%;">
+                  <label style=" color: #737373bf !important;">Occupation</label>
+                  <md-select style="width: auto;" required name="occupation" ng-model="partnerProfile.occupation">
+                    <md-option value="Maratha"> Maratha </md-option>
+                    <md-option value="Bramhnin"> Bramhnin </md-option>
+                    <md-option value="sonar"> sonar </md-option>
+                    <md-option value="kumbharr"> kumbharr </md-option>
+
+                  </md-select>
+                  <div ng-messages="partnerProfileFrom.occupation.$error" role="alert">
+                    <div ng-message-exp="['required']">
+                      plaese select
+                    </div>
+                  </div>
+                </md-input-container>
+
+
+                <md-input-container class="md-block" flex-gt-sm style="width: 104%;">
+                  <label style=" color: #737373bf !important;">Employment Type </label>
+                  <md-select style="width: auto;" required name="employmentType"
+                    ng-model="partnerProfile.employmentType">
+                    <md-option ng-repeat="employmentType in employmentTypeList" value="{{employmentType.name}}">
+                      {{employmentType.name}}
+                    </md-option>
+
+                  </md-select>
+                  <div ng-messages="partnerProfileFrom.employmentType.$error" role="alert">
+                    <div ng-message-exp="['required']">
+                      plaese select
+                    </div>
+                  </div>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm style="width: 104%;">
+                  <label style=" color: #737373bf !important;">Country</label>
+                  <md-select style="width: auto;" required name="country" ng-model="partnerProfile.country">
+                    <md-option ng-repeat="country in countryList" value="{{country.name}}">
+                      {{country.name}}
+                    </md-option>
+                  </md-select>
+                  <div ng-messages="partnerProfileFrom.country.$error" role="alert">
+                    <div ng-message-exp="['required']">
+                      plaese select
+                    </div>
+                  </div>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm style="width: 104%;">
+                  <label style=" color: #161111bf !important;">Annual Income
+
+
+                  </label>
+                  <md-select style="width: auto;" required name="annualIncome" ng-model="partnerProfile.annualIncome">
+                    <md-option ng-repeat="annualIncome in annualIncomeList" value="{{annualIncome.name}}">
+                      {{annualIncome.name}}
+                    </md-option>
+
+                  </md-select>
+                  <div ng-messages="partnerProfileFrom.annualIncome.$error" role="alert">
+                    <div ng-message-exp="['required']">
+                      plaese select
+                    </div>
+                  </div>
+                </md-input-container>
+              </div>
+              <div class="col-sm-1"></div>
+
+
+            </div>
+            <div class="row justify-content-md-center">
+              <div class="col-sm-6 col-sm-offset-5">
+
+                <button type="button" ng-click="partnerSearch()" class="btn btn-primary custom-button">Next</button>
+              </div>
+
+            </div>
+          </div>
+          <div class="col-sm-1"></div>
+          <div class="col-sm-3 you-may-like-div">
+            <div class="you-may-like-header"><label style="font-size: 17px;">View Similar Profiles</label></div>
+
+            <div class="you-may-like">
+              <ul>
+                <li ng-repeat="profile in similarProfiles " ng-click="goToProfileView(profile.id)">
+                  <div class="col-md-12 ">
+                    <span class="pull-left you-may-like-pic ">
+                      <img src="{{profile.photos.profilePicturePath}}" style="height: 80px;    border-radius: 49px;
+                            width: 80px;">
+                    </span>
+                    <div class="media-body" style="">
+                      <h5>{{profile.personalDetails.name}}</h5>
+                      <p>{{profile.personalDetails.age}} yrs, {{profile.health.height}} cm,
+                        {{profile.educationDetails.employmentType}} ,{{profile.educationDetails.country}} </p>
+                    </div>
+                  </div>
+                </li>
+
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- end -->
+      </form>
+    </div>
+
+  </div>

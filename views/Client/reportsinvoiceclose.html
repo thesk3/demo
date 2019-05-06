@@ -1,0 +1,98 @@
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+md-tooltip.md-show {
+    color: white !important;
+    -webkit-transition: all .4s cubic-bezier(.25, .8, .25, 1);
+    transition: all .4s cubic-bezier(.25, .8, .25, 1);
+    pointer-events: auto;
+}
+.md-show {
+    visibility: visible;
+    color: white !important;
+}
+</style>   
+          <div class="container">
+         <br>
+         <form name="filtere" autocomplete="off" >
+	<div class="row">
+		<div class="col-sm-2">
+			<div class="form-group">
+				<div class="input-group input-group-sm">
+
+					<input type="text" class="form-control getDate" placeholder="From"
+						name="visitDate" ng-model="financeFilter.from" required> <span
+						class="input-group-addon"> <i class="fa fa-calendar"></i>
+					</span>
+
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-2">
+			<div class="form-group">
+				<div class="input-group input-group-sm">
+
+					<input type="text" class="form-control getDate" placeholder="To"
+						name="to" ng-model="financeFilter.to" required> <span
+						class="input-group-addon"> <i class="fa fa-calendar"></i>
+					</span>
+
+				</div>
+			</div>
+
+		</div>
+		<div class="col-sm-1">
+			<label for="inputsm" class="labelInput"
+				style="margin-right: 65px; margin-top: 7px;"
+				ng-click="finaceFilter()"><i class="fa fa-search"
+				style="font-size: 18px;"></i></label>
+		</div>
+
+	</div>
+	</form>
+             <div class="panel panel-deva" >
+                        <div class="panel-heading" style="font-size: 15px;">
+			Invoice List	</div>
+                        <div class="panel-body">
+                    <div class="table-responsive">
+                        <table  dt-options="vm.dtOptions" datatable="ng"
+                        dt-instance="vm.dtInstance" class="table table-striped table-bordered" id="dataTable1" width="99%" cellspacing="0" style="align-content: center;">
+                          <thead>
+                            <tr align="center" style="background: #e6e6e6; color: black;">
+                              <th style="width: 20px;">Sr.No</th>
+                              <th>Date</th>
+                              <th>Invoice No</th>
+                              <th>Client</th>
+                              <th>Billing Entity</th>
+                              <th>Invoice Amount</th>
+                              <th>Receipt Amount</th>  
+                               <th>Receipt Date</th>
+                              <th>Transaction ID</th>
+                              <th>Print</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr align="center" ng-repeat="client in clientlist track by $index" >
+                            
+                              <td><span ng-bind="$index+1"></span></td>
+                             <!--  <td class="goto" ng-click="clientDetail(client)"><span ng-bind="client.clientID"></span>  </td> -->
+                              <td><span ng-bind="client.invoiceDate | date:'dd-MMM-yyyy'"></span></td>
+                              <td>
+                        <span ng-if="client.billingEntity=='1'">MRC/ <span ng-bind="year"></span>/<span	ng-bind="client.invoiceMCA"></span></span>
+							     <span ng-if="client.billingEntity=='2'">CA/<span ng-bind="year"></span>/<span	ng-bind="client.invoiceCA"></span></span></td>
+                              <td><span ng-bind="client.clientName"></span></td>
+                              <td><span ng-if="client.billingEntity=='1'">Manoj Chemburkar</span><span ng-if="client.billingEntity=='2'">Chemburkar & Associates</span></td>
+                              <td><span ng-bind="client.amount"></span></td>  
+                              <td><span ng-bind="client.reciptAmount"></span></td>  
+                              <td><span ng-bind="client.reciptDate| date:'dd-MMM-yyyy'"></span></td> 
+                               <td><span ng-show="client.transactionID!=null" ng-bind="client.transactionID"></span><span ng-show="client.transactionID==null">Cash</span></td>   
+                              <td><i ng-click="printInvoice(client.invoiceID,4)" class="fa fa-file-pdf-o" style="font-size:20px;color:red"></i></td>  
+                                                      
+                            </tr>
+                        </tbody>
+                      </table>	
+                    </div>
+                    </div></div>  
+                     
+                  </div>
+    
+                 

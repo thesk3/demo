@@ -1,0 +1,952 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<style>
+    md-select-value>span {
+        color: #737373bf !important;
+
+    }
+
+    .md-select-value>span:not(.md-select-icon) .md-text {
+        display: inline;
+        color: black;
+    }
+
+    md-select {
+        display: flex;
+        margin: 0px 0px 0px !important;
+    }
+
+    .md-datepicker-input-container {
+        position: relative;
+        padding-bottom: 5px;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        display: inline-block;
+        width: 50%;
+    }
+</style>
+<div class="container" ng-init="next=1">
+
+    <div class="row">
+        <div class="panel">
+            <div class="panel-heading panel-header">
+                <center>Create Profile{{next}}</center>
+            </div>
+            <div class="wizard">
+                <div class="wizard-step " ng-class="{'past':next >= 1 }">
+                    <div class="wizard-step-child">1</div>
+                </div>
+                <div class="wizard-step  " ng-class="{'past': next >= 2 }">
+                    <div class="wizard-step-child">2</div>
+                </div>
+                <div class="wizard-step " ng-class="{'past': next >= 3 }">
+                    <div class="wizard-step-child">3</div>
+                </div>
+                <div class="wizard-step " ng-class="{'past': next >= 4 }">
+                    <div class="wizard-step-child">4</div>
+                </div>
+                <div class="wizard-step" ng-class="{'past': next >= 5 }">
+                    <div class="wizard-step-child">5</div>
+                </div>
+                <div class="wizard-step" ng-class="{'past': next >= 6 }">
+                    <div class="wizard-step-child">6</div>
+                </div>
+                <div class="wizard-step" ng-class="{'past':next >= 7 }">
+                    <div class="wizard-step-child">7</div>
+                </div>
+                <div class="wizard-step" ng-click="next=next+7;" ng-class="{'active': next >= 8 }">
+                    <div class="wizard-step-child">8</div>
+                </div>
+
+            </div>
+            <div class="panel-body">
+                <form name="stepOne" ng-show="next==1;">
+<!-- ------------------------------1st  info-------------------- -->
+
+                    <div class="row"></div>
+                    <div class="col-sm-2"><label style="    float: right;">basic details</label></div>
+                    <div class="col-sm-6">
+                        <md-input-container class="md-block" flex-gt-sm style="width: 104%;">
+                            <label style=" color: #737373bf !important;">
+                                Profile Created By</label>
+                            <md-select required name="profileCreatedFor" ng-model="createProfile.profileCreatedFor">
+                                <md-option ng-repeat="state in createdBy" value="{{state.name}}">
+                                    {{state.name}}
+                                </md-option>
+                            </md-select>
+                            <div ng-messages="stepOne.profileCreatedFor.$error" role="alert">
+                                <div ng-message-exp="['required']">
+                                    Select profile for
+                                </div>
+                            </div>
+                        </md-input-container>
+
+
+                        <md-input-container class="md-block">
+                            <label> Email</label>
+                            <input required type="email" name="clientEmail" ng-model="createProfile.clientEmail"
+                                style="width: 50%;" minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+
+                            <div ng-messages="stepOne.clientEmail.$error" role="alert">
+                                <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                                    Your email must be between 10 and 100 characters long and look like an e-mail
+                                    address.
+                                </div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container class="md-block">
+                            <label> Primary Mobile
+
+                            </label>
+                            <input required name="primaryMobile" ng-model="createProfile.primaryMobile"
+                                style="width: 50%;" minlength="10" maxlength="10" /><i class="fa fa-whatsapp" style="    font-size: 16px;
+                                -webkit-text-fill-color: green;"></i>
+
+                            <div ng-messages="stepOne.primaryMobile.$error" role="alert">
+                                <div ng-message-exp="['required', 'minlength', 'maxlength']">
+                                    Please enter valid number
+                                </div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container class="md-block">
+                            <label> Secondary Mobile</label>
+                            <input required name="secondaryMobile" ng-model="createProfile.secondaryMobile"
+                                style="width: 50%;" minlength="10" maxlength="10" />
+
+                            <div ng-messages="stepOne.secondaryMobile.$error" role="alert">
+                                <div ng-message-exp="['required', 'minlength', 'maxlength']">
+                                    Please enter valid number
+                                </div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <div class="col-sm-3"></div>
+                    <div class="row">
+                        <div class="col-sm-8"></div>
+                        <div class="col-sm-4">
+                            <button type="button" class="btn btn-primary custom-button-cancel "
+                                ng-click="next<=1?next==next:next=next-1;" data-dismiss="modal">Cancel</button>
+                            <button type="button" ng-click="next>=8?next==next:next=next+1;"
+                                class="btn btn-primary custom-button">Next</button>
+                        </div>
+                    </div>
+
+                </form>
+
+
+                <!-- ------------------------------2nd  info-------------------- -->
+
+                <form name="stepTwo" ng-show="next==2;">
+                    <div class="row">
+                        <div class="col-sm-6">
+
+                            <label style="    float: left;">Personal Details of Bride/Groom</label>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">
+
+                        </div>
+                        <div class="col-sm-5">
+                            <md-input-container class="md-block">
+                                <label> Name</label>
+                                <input required type="text" name="name" ng-model="createProfile.name"
+                                    style="width: 50%;" minlength="2" maxlength="160" />
+
+                                <!-- <div ng-messages="stepTwo.name.$error" role="alert">
+                                    <div ng-message-exp="['required', 'minlength', 'maxlength']">
+                                        maximum 160 char
+                                    </div>
+                                </div> -->
+                                <div ng-messages="stepTwo.name.$error" role="alert">
+                                    <div ng-message="required">This is required.</div>
+                                    <div ng-message="minlength">minlength</div>
+                                    <div ng-message="maxlength">Maxlength</div>
+
+
+                                </div>
+                            </md-input-container>
+
+
+
+                            <md-input-container class="md-block" flex-gt-sm style="width: 104%;">
+                                <label style=" color: #737373bf !important;">Gender</label>
+                                <md-select required name="gender" ng-model="createProfile.gender">
+                                    <md-option ng-repeat="state in gender" value="{{state.name}}">
+                                        {{state.name}}
+                                    </md-option>
+                                </md-select>
+                                <div ng-messages="stepTwo.gender.$error" role="alert">
+                                    <div ng-message-exp="['required']">
+                                        Please select gender
+                                    </div>
+                                </div>
+                            </md-input-container>
+
+                            <!-- <md-input-container class="md-block">
+                                <label> Gender</label>
+                                <input required type="text" name="gender" ng-model="createProfile.gender"
+                                    style="width: 50%;" minlength="2" maxlength="160" />
+
+                                <div ng-messages="stepTwo.clientEmail.$error" role="alert">
+                                    <div ng-message-exp="['required', 'minlength', 'maxlength']">
+                                        maximum 160 char
+                                    </div>
+                                </div>
+                            </md-input-container> -->
+
+
+                            <md-input-container class="md-block" flex-gt-sm style="width: 100%;">
+
+                                <md-datepicker required name="dob" ng-model="dob" width="50%"
+                                    md-hide-icons="calendar" md-placeholder="Enter date1" md-open-on-focus>
+
+                                </md-datepicker>
+                                <div ng-messages="stepTwo.dob.$error" role="alert">
+                                    <div ng-message-exp="['required']">
+                                        Please select DOB
+                                    </div>
+                                </div>
+                            </md-input-container>
+
+
+                            <md-input-container class="md-block" flex-gt-sm style="width: 104%;">
+                                <label>Marital Status</label>
+                                <md-select name="maritalStatus" required ng-model="createProfile.maritalStatus">
+                                    <md-option ng-repeat="state in maritalOption" value="{{state.name}}">
+                                        {{state.name}}
+                                    </md-option>
+                                </md-select>
+                                <div ng-messages="stepTwo.maritalStatus.$error" role="alert">
+                                    <div ng-message-exp="['required']">
+                                        Please select maritalStatus
+                                    </div>
+                                </div>
+                            </md-input-container>
+
+                            <!-- <md-input-container class="md-block">
+                                <label>Marital Status</label>
+                                <input required type="text" name="maritalStatus" ng-model="createProfile.maritalStatus"
+                                    style="width: 50%;" minlength="2" maxlength="160" />
+
+                                <div ng-messages="stepTwo.clientEmail.$error" role="alert">
+                                    <div ng-message-exp="['required', 'minlength', 'maxlength']">
+                                        maximum 160 char
+                                    </div>
+                                </div>
+                            </md-input-container> -->
+
+                            <md-input-container class="md-block" flex-gt-sm style="width: 104%;">
+                                <label>Children</label>
+                                <md-select required name="children" ng-model="createProfile.children">
+                                    <md-option ng-repeat="state in Children" value="{{state.name}}">
+                                        {{state.name}}
+                                    </md-option>
+                                </md-select>
+                                <div ng-messages="stepTwo.children.$error" role="alert">
+                                    <div ng-message-exp="['required']">
+                                        Please select
+                                    </div>
+                                </div>
+
+                            </md-input-container>
+
+
+                            <!-- <md-input-container class="md-block">
+                                <label> Children</label>
+                                <input required type="text" name="children" ng-model="createProfile.children"
+                                    style="width: 50%;" minlength="2" maxlength="160" />
+
+                                <div ng-messages="stepTwo.clientEmail.$error" role="alert">
+                                    <div ng-message-exp="['required', 'minlength', 'maxlength']">
+                                        maximum 160 char
+                                    </div>
+                                </div>
+                            </md-input-container> -->
+
+                            <md-input-container class="md-block" ng-show="createProfile.children=='yes'">
+                                <label> No of Children</label>
+                                <input required type="number" name="noOfChildren" ng-model="createProfile.noOfChildren"
+                                    style="width: 50%;" />
+
+                                <div ng-messages="stepTwo.noOfChildren.$error" role="alert">
+                                    <div ng-message="required">This is required.</div>
+
+
+
+                                </div>
+                            </md-input-container>
+
+
+                        </div>
+                        <div class="col-sm-5">
+
+                            <md-input-container class="md-block">
+                                <label> Height</label>
+                                <input required type="number" name="height" ng-model="createProfile.height"
+                                    style="width: 50%;" />
+
+                                <div ng-messages="stepTwo.height.$error" role="alert">
+                                    <div ng-message="required">
+                                        Please enter a value
+                                    </div>
+                                </div>
+                            </md-input-container>
+
+                            <md-input-container class="md-block">
+                                <label> Weight</label>
+                                <input required type="number" name="weight" ng-model="createProfile.weight"
+                                    style="width: 50%;" />
+
+                                <div ng-messages="stepTwo.weight.$error" role="alert">
+                                    <div ng-message-exp="['required', 'minlength', 'maxlength']">
+                                        Please enter a value
+                                    </div>
+                                </div>
+                            </md-input-container>
+
+
+                            <md-input-container class="md-block">
+                                <label> Skin Tone</label>
+                                <input required type="text" name="skinTone" ng-model="createProfile.skinTone"
+                                    style="width: 50%;" />
+
+                                <div ng-messages="stepTwo.skinTone.$error" role="alert">
+                                    <div ng-message-exp="['required']">
+                                        Please enter a value
+                                    </div>
+                                </div>
+                            </md-input-container>
+
+                            <md-input-container class="md-block" flex-gt-sm style="width: 104%;">
+                                <label>Body Type</label>
+                                <md-select required name="bodyType" ng-model="createProfile.bodyType">
+                                    <md-option  value="Average">Average </md-option>
+                                    <md-option  value="Slim">Slim </md-option>
+                                    <md-option  value="Atheletic">Atheletic </md-option>
+                                    <md-option  value="Fat">Fat </md-option>
+                                </md-select>
+                                <div ng-messages="stepTwo.bodyType.$error">
+                                    <div ng-message="required">Please select type</div>
+                                </div>
+                            </md-input-container>
+                            <!-- <md-input-container class="md-block">
+                                <label> Body Type</label>
+                                <input required type="NU" name="name" ng-model="createProfile.name"
+                                    style="width: 50%;" minlength="2" maxlength="160" />
+
+                                <div ng-messages="stepTwo.clientEmail.$error" role="alert">
+                                    <div ng-message-exp="['required', 'minlength', 'maxlength']">
+                                        maximum 160 char
+                                    </div>
+                                </div>
+                            </md-input-container> -->
+
+
+                            <md-input-container class="md-block">
+                                <label> Health Information</label>
+                                <input type="text" name="healthInformation" ng-model="createProfile.healthInformation"
+                                    style="width: 50%;" minlength="2" maxlength="160" />
+
+                                <!-- <div ng-messages="stepTwo.clientEmail.$error" role="alert">
+                                    <div ng-message-exp="['required', 'minlength', 'maxlength']">
+                                        maximum 160 char
+                                    </div>
+                                </div> -->
+                            </md-input-container>
+
+
+                            <md-input-container class="md-block">
+                                <label> Disability</label>
+                                <input required type="text" name="disability" ng-model="createProfile.disability"
+                                    style="width: 50%;" />
+
+                                <div ng-messages="stepTwo.disability.$error" role="alert">
+                                    <div ng-message-exp="['required', 'minlength', 'maxlength']">
+                                        maximum 160 char
+                                    </div>
+                                </div>
+                            </md-input-container>
+
+
+                            <md-input-container class="md-block" flex-gt-sm style="width: 104%;">
+                                <label>Glasses</label>
+                                <md-select required name="glasses" ng-model="createProfile.glasses">
+                                    <md-option ng-repeat="state in Children" value="{{state.name}}">
+                                        {{state.name}}
+                                    </md-option>
+                                </md-select>
+                                <div ng-messages="stepTwo.glasses.$error" role="alert">
+                                    <div ng-message-exp="['required']">
+                                        plaese select
+                                    </div>
+                                </div>
+                            </md-input-container>
+
+
+
+
+
+                        </div>
+                        <div class="col-sm-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-8"></div>
+                        <div class="col-sm-4">
+                            <button type="button" class="btn btn-primary custom-button-cancel "
+                                ng-click="next<=1?next==next:next=next-1;" data-dismiss="modal">Cancel</button>
+                            <button type="button" ng-click="next>=8?next==next:next=next+1;"
+                                class="btn btn-primary custom-button">Next</button>
+                        </div>
+                    </div>
+
+                </form>
+
+<!-- ------------------------------3rd  info-------------------- -->
+
+                <form name="stepThree" ng-show="next==3;">
+
+
+                    <div class="row"></div>
+                    <div class="col-sm-2"><label style="    float: right;">Religion & Caste</label></div>
+                    <div class="col-sm-6">
+                        <md-input-container class="md-block" flex-gt-sm style="width: 104%;">
+                            <label style=" color: #737373bf !important;">Religion</label>
+                            <md-select required name="religion" ng-model="createProfile.religion">
+                                <md-option ng-repeat="state in religion" value="{{state.name}}">
+                                    {{state.name}}
+                                </md-option>
+                            </md-select>
+                            <div ng-messages="stepThree.religion.$error" role="alert">
+                                <div ng-message-exp="['required']">
+                                    plaese select
+                                </div>
+                            </div>
+                        </md-input-container>
+
+
+                        <md-input-container class="md-block" flex-gt-sm style="width: 104%;">
+                            <label style=" color: #737373bf !important;">Caste</label>
+                            <md-select required name="caste" ng-model="createProfile.caste">
+                                <md-option value="Maratha">  Maratha    </md-option>
+                                <md-option value="Bramhnin">  Bramhnin    </md-option>
+                                <md-option value="sonar">  sonar    </md-option>
+                                <md-option value="sonar">  kumbharr    </md-option>
+                            
+                            </md-select>
+                            <div ng-messages="stepThree.caste.$error" role="alert">
+                                <div ng-message-exp="['required']">
+                                    plaese select
+                                </div>
+                            </div>
+                        </md-input-container>
+
+
+                        <md-input-container class="md-block" flex-gt-sm style="width: 104%;">
+                            <label style=" color: #737373bf !important;">Community</label>
+                            <md-select required name="community" ng-model="createProfile.community">
+                                <md-option value="Hindu">  Hindu  </md-option>
+                            </md-select>
+                            <div ng-messages="stepThree.community.$error" role="alert">
+                                <div ng-message-exp="['required']">
+                                    plaese select
+                                </div>
+                            </div>
+                        </md-input-container>
+
+
+                        <md-input-container class="md-block" flex-gt-sm style="width: 104%;">
+                            <label style=" color: #161111bf !important;">Mother Tongue
+
+                            </label>
+                            <md-select required name="motherTongue" ng-model="createProfile.motherTongue">
+                                <md-option value="Marathi">  Marathi  </md-option>
+                                <md-option value="japnees">  japnees  </md-option>
+                                <md-option value="english">  english </md-option>
+                                <md-option value="korean">  korean  </md-option>
+                                <md-option value="French">  French </md-option>
+                           
+                            </md-select>
+                            <div ng-messages="stepThree.motherTongue.$error" role="alert">
+                                <div ng-message-exp="['required']">
+                                    plaese select
+                                </div>
+                            </div>
+                        </md-input-container>
+
+                    </div>
+                    <div class="col-sm-3"></div>
+                    <div class="row">
+                        <div class="col-sm-8"></div>
+                        <div class="col-sm-4">
+                            <button type="button" class="btn btn-primary custom-button-cancel "
+                                ng-click="next<=1?next==next:next=next-1;" data-dismiss="modal">Cancel</button>
+                            <button type="button" ng-click="next>=8?next==next:next=next+1;"
+                                class="btn btn-primary custom-button">Next</button>
+                        </div>
+                    </div>
+
+                </form>
+
+<!-- ------------------------------4th  info-------------------- -->
+
+                <form name="stepFour" ng-show="next==4;">
+
+
+                    <div class="row"></div>
+                    <div class="col-sm-2"><label style="    float: right;">Horoscope</label></div>
+                    <div class="col-sm-6">
+                        <md-input-container class="md-block" flex-gt-sm style="width: 104%;">
+                            <label style=" color: #737373bf !important;">DOB</label>
+                            <md-select required name="dob" ng-model="createProfile.state">
+                                <md-option ng-repeat="state in religion" value="{{state.name}}">
+                                    {{state.name}}
+                                </md-option>
+                            </md-select>
+                            <div ng-messages="stepFour.dob.$error" role="alert">
+                                <div ng-message-exp="['required']">
+                                    plaese select
+                                </div>
+                            </div>
+                        </md-input-container>
+
+
+                        <md-input-container class="md-block" flex-gt-sm style="width: 104%;">
+                            <label style=" color: #737373bf !important;">Time</label>
+                            <md-select required name="time" ng-model="createProfile.time">
+                                <md-option ng-repeat="state in religion" value="{{state.name}}">
+                                    {{state.name}}
+                                </md-option>
+                            </md-select>
+                            <div ng-messages="stepFour.time.$error" role="alert">
+                                <div ng-message-exp="['required']">
+                                    plaese select
+                                </div>
+                            </div>
+                        </md-input-container>
+
+
+                        <md-input-container class="md-block" flex-gt-sm style="width: 104%;">
+                            <label style=" color: #737373bf !important;">Place of Birth</label>
+                            <md-select required name="placeOfBirth" ng-model="createProfile.placeOfBirth">
+                                <md-option ng-repeat="state in religion" value="{{state.name}}">
+                                    {{state.name}}
+                                </md-option>
+                            </md-select>
+                            <div ng-messages="stepFour.placeOfBirth.$error" role="alert">
+                                <div ng-message-exp="['required']">
+                                    plaese select
+                                </div>
+                            </div>
+                        </md-input-container>
+
+
+                        <md-input-container class="md-block" flex-gt-sm style="width: 104%;">
+                            <label style=" color: #737373bf !important;">Rashi
+
+                            </label>
+                            <md-select required nam="rashi" ng-model="createProfile.rashi">
+                                <md-option ng-repeat="state in religion" value="{{state.name}}">
+                                    {{state.name}}
+                                </md-option>
+                            </md-select>
+                            <div ng-messages="stepFour.rashi.$error" role="alert">
+                                <div ng-message-exp="['required']">
+                                    plaese select
+                                </div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-sm style="width: 104%;">
+                            <label style=" color: #737373bf !important;">Nakshatra
+
+                            </label>
+                            <md-select required name="nakshatra" ng-model="createProfile.nakshatra">
+                                <md-option ng-repeat="state in religion" value="{{state.name}}">
+                                    {{state.name}}
+                                </md-option>
+                            </md-select>
+                            <div ng-messages="stepFour.nakshatra.$error" role="alert">
+                                <div ng-message-exp="['required']">
+                                    plaese select
+                                </div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-sm style="width: 104%;">
+                            <label style=" color: #737373bf !important;">Manglik
+
+                            </label>
+                            <md-select required name="manglik" ng-model="createProfile.manglik">
+                                <md-option  value="{{state.name}}">
+                                  Yes
+                                </md-option>
+                                <md-option  value="{{state.name}}">
+                                    No
+                                  </md-option>
+                            </md-select>
+                            <div ng-messages="stepFour.manglik.$error" role="alert">
+                                <div ng-message-exp="['required']">
+                                    plaese select
+                                </div>
+                            </div>
+                        </md-input-container>
+
+                    </div>
+                    <div class="col-sm-3"></div>
+                    <div class="row">
+                        <div class="col-sm-8"></div>
+                        <div class="col-sm-4">
+                            <button type="button" class="btn btn-primary custom-button-cancel "
+                                ng-click="next<=1?next==next:next=next-1;" data-dismiss="modal">Cancel</button>
+                            <button type="button" ng-click="next>=8?next==next:next=next+1;"
+                                class="btn btn-primary custom-button">Next</button>
+                        </div>
+                    </div>
+
+                </form>
+<!-- ------------------------------5th  info-------------------- -->
+
+                <form name="stepFive" ng-show="next==5  ;">
+
+
+                    <div class="row"></div>
+                    <div class="col-sm-2"><label style="    float: right;">Education & Career
+
+                        </label></div>
+                    <div class="col-sm-6">
+                        <md-input-container class="md-block">
+                            <label> Education</label>
+                            <input required type="text" name="education" ng-model="createProfile.education"
+                                style="width: 50%;" />
+
+                            <div ng-messages="stepFive.education.$error" role="alert">
+                                <div ng-message-exp="['required']">
+                                    please insert value
+                                </div>
+                            </div>
+                        </md-input-container>
+
+
+                        <md-input-container class="md-block">
+                            <label> Education in detail
+
+                            </label>
+                            <input required type="text" name="educationDetails"
+                                ng-model="createProfile.educationDetails" style="width: 50%;" />
+
+                            <div ng-messages="stepFive.educationDetails.$error" role="alert">
+                                <div ng-message-exp="['required']">
+                                    Please insert a value
+                                </div>
+
+                            </div>
+                        </md-input-container>
+
+
+
+                        <md-input-container class="md-block">
+                            <label> Occupation</label>
+                            <input required type="text" name="occupation" ng-model="createProfile.occupation"
+                                style="width: 50%;" />
+
+                            <div ng-messages="stepFive.occupation.$error" role="alert">
+                                <div ng-message-exp="['required', 'minlength', 'maxlength']">
+                                    maximum 160 char
+                                </div>
+                            </div>
+                        </md-input-container>
+
+
+                        <md-input-container class="md-block" flex-gt-sm style="width: 104%;">
+                            <label style=" color: #737373bf !important;">Employment Type
+                            </label>
+                            <md-select required name="employmentType" ng-model="createProfile.employmentType">
+                                <md-option  value="Permenert">Permenert     </md-option>
+                                <md-option  value="Goverment">Goverment     </md-option>
+                                <md-option  value="tempoerrey">tempoerrey    </md-option>
+
+                            </md-select>
+                            <div ng-messages="stepFive.employmentType.$error" role="alert">
+                                <div ng-message-exp="['required']">
+                                    please insert value
+                                </div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-sm style="width: 104%;">
+                            <label style=" color: #737373bf !important;">Country
+
+                            </label>
+                            <md-select ng-model="createProfile.country">
+                                <md-option value="Indian">Indian        </md-option>
+                            </md-select>
+                            <div ng-messages="stepFive.country.$error" role="alert">
+                                <div ng-message-exp="['required']">
+                                    please insert value
+                                </div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container class="md-block">
+                            <label> Annual Income
+
+                            </label>
+                            <input required type="text" name="annualIncome"
+                                ng-model="createProfile.annualIncome" style="width: 50%;" />
+
+                            <div ng-messages="stepFive.educationDetails.$error" role="alert">
+                                <div ng-message-exp="['required']">
+                                    Please insert a value
+                                </div>
+
+                            </div>
+                        </md-input-container>
+
+                        <!-- <md-input-container class="md-block" flex-gt-sm style="width: 104%;">
+                            <label style=" color: #737373bf !important;">Annual Income
+                            </label>
+                            <md-select required name="annualIncome" ng-model="createProfile.annualIncome">
+                                <md-option ng-repeat="state in religion" value="{{state.name}}">
+                                    {{state.name}}
+                                </md-option>
+                            </md-select>
+                            <div ng-messages="stepFive.annualIncome.$error" role="alert">
+                                <div ng-message-exp="['required']">
+                                    please insert value
+                                </div>
+                            </div>
+                        </md-input-container> -->
+                    </div>
+                    <div class="col-sm-3"></div>
+                    <div class="row">
+                        <div class="col-sm-8"></div>
+                        <div class="col-sm-4">
+                            <button type="button" class="btn btn-primary custom-button-cancel "
+                                ng-click="next<=1?next==next:next=next-1;" data-dismiss="modal">Cancel</button>
+                            <button type="button" ng-click="next>=8?next==next:next=next+1;"
+                                class="btn btn-primary custom-button">Next</button>
+                        </div>
+                    </div>
+
+                </form>
+
+<!-- ------------------------------6th  info-------------------- -->
+
+                <form name="stepSix" ng-show="next==6  ;">
+
+
+                    <div class="row"></div>
+                    <div class="col-sm-2"><label style="    float: right;">Life Style
+
+                        </label></div>
+                    <div class="col-sm-6">
+                        <md-input-container class="md-block" flex-gt-sm style="width: 104%;">
+                            <label style=" color: #737373bf !important;">Family Values
+                            </label>
+                            <md-select required name="familyValues" ng-model="createProfile.familyValues">
+                                <md-option ng-repeat="state in religion" value="{{state.name}}">
+                                    {{state.name}}
+                                </md-option>
+                            </md-select>
+                            <div ng-messages="stepSix.familyValues.$error" role="alert">
+                                <div ng-message-exp="['required']">
+                                    please Select value
+                                </div>
+                            </div>
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex-gt-sm style="width: 104%;">
+                            <label style=" color: #737373bf !important;">Diet
+
+                            </label>
+                            <md-select required name="diet" ng-model="createProfile.diet">
+                                <md-option ng-repeat="state in religion" value="{{state.name}}">
+                                    {{state.name}}
+                                </md-option>
+                            </md-select>
+                            <div ng-messages="stepSix.diet.$error" role="alert">
+                                <div ng-message-exp="['required']">
+                                    please Select value
+                                </div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-sm style="width: 104%;">
+                            <label style=" color: #737373bf !important;">Smoke
+                            </label>
+                            <md-select required name="smoke"ng-model="createProfile.smoke">
+                                <md-option ng-repeat="state in religion" value="{{state.name}}">
+                                    {{state.name}}
+                                </md-option>
+                            </md-select>
+                            <div ng-messages="stepSix.smoke.$error" role="alert">
+                                <div ng-message-exp="['required']">
+                                    please Select value
+                                </div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-sm style="width: 104%;">
+                            <label style=" color: #737373bf !important;">Drinks
+                            </label>
+                            <md-select required name="drinks" ng-model="createProfile.drinks">
+                                <md-option ng-repeat="state in religion" value="{{state.name}}">
+                                    {{state.name}}
+                                </md-option>
+                            </md-select>
+                            <div ng-messages="stepSix.drinks.$error" role="alert">
+                                <div ng-message-exp="['required']">
+                                    please Select value
+                                </div>
+                            </div>
+                        </md-input-container>
+
+                    </div>
+                    <div class="col-sm-3"></div>
+                    <div class="row">
+                        <div class="col-sm-8"></div>
+                        <div class="col-sm-4">
+                            <button type="button" class="btn btn-primary custom-button-cancel "
+                                ng-click="next<=1?next==next:next=next-1;" data-dismiss="modal">Cancel</button>
+                            <button type="button" ng-click="next>=8?next==next:next=next+1;"
+                                class="btn btn-primary custom-button">Next</button>
+                        </div>
+                    </div>
+
+                </form>
+
+
+
+<!-- ------------------------------7th  info-------------------- -->
+
+
+                <form name="stepSeven" ng-show="next==7 ;">
+
+
+                    <div class="row">
+                        <div class="col-sm-2"><label style="    float: right;">
+                                About Yourself & Family
+
+                            </label></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-5">
+
+                            <div class="form-group">
+                                <label for="comment">Family Background
+
+                                    :</label>
+                                <textarea class="form-control" rows="5" id="comment" name="familyBackground"
+                                ng-model="createProfile.familyBackground"
+                                ></textarea>
+                            </div>
+                        </div>
+                        <div class="col-sm-5">
+                            <div class="form-group">
+                                <label for="comment">About Yourself
+
+                                </label>
+                                <textarea class="form-control" rows="5" id="comment" name="aboutSelf" ng-model="createProfile.aboutSelf"></textarea>
+                            </div>
+
+
+                        </div>
+
+                        <div class="col-sm-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-8"></div>
+                        <div class="col-sm-4">
+                            <button type="button" class="btn btn-primary custom-button-cancel "
+                                ng-click="next<=1?next==next:next=next-1;" data-dismiss="modal">Cancel</button>
+                            <button type="button" ng-click="next>=8?next==next:next=next+1;"
+                                class="btn btn-primary custom-button">Next</button>
+                        </div>
+                    </div>
+
+                </form>
+
+<!-- ------------------------------8th  info-------------------- -->
+
+                <form name="stepEight" ng-show="next==8;">
+
+
+                    <div class="row col-sm-12">
+
+                        <label style="    float: left;">
+                            Profile Photos
+                        </label>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label style="    padding-left: 15px;"> Main Profile Photo</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <label style="    padding-left: 15px;"> Album Photos</label>
+
+                        </div>
+                    </div>
+
+                    <div class="row" style="   padding: 14px;
+                        ">
+                        <div class="col-sm-3 imgUp">
+                            <div class="imagePreview"></div>
+                            <label class="btn btn-primary btn-primary1">
+                                Upload<input type="file" class="uploadFile img" value="Upload Photo"
+                                    style="width: 0px;height: 0px;overflow: hidden;">
+                            </label>
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="col-sm-3 imgUp">
+                                <div class="imagePreview"></div>
+                                <label class="btn btn-primary btn-primary1">
+                                    Upload<input type="file" class="uploadFile img" value="Upload Photo"
+                                        style="width: 0px;height: 0px;overflow: hidden;">
+                                </label>
+                            </div><!-- col-2 -->
+                            <div class="col-sm-3 imgUp">
+                                <div class="imagePreview"></div>
+                                <label class="btn btn-primary btn-primary1">
+                                    Upload<input type="file" class="uploadFile img" value="Upload Photo"
+                                        style="width: 0px;height: 0px;overflow: hidden;">
+                                </label>
+                            </div><!-- col-2 -->
+                            <div class="col-sm-3 imgUp">
+                                <div class="imagePreview"></div>
+                                <label class="btn btn-primary btn-primary1">
+                                    Upload<input type="file" class="uploadFile img" value="Upload Photo"
+                                        style="width: 0px;height: 0px;overflow: hidden;">
+                                </label>
+                            </div><!-- col-2 -->
+                            <div class="col-sm-3 imgUp">
+                                <div class="imagePreview"></div>
+                                <label class="btn btn-primary btn-primary1">
+                                    Upload<input type="file" class="uploadFile img" value="Upload Photo"
+                                        style="width: 0px;height: 0px;overflow: hidden;">
+                                </label>
+                            </div><!-- col-2 -->
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-8"></div>
+                        <div class="col-sm-4">
+                            <button type="button" class="btn btn-primary custom-button-cancel "
+                                ng-click="next<=1?next==next:next=next-1;" data-dismiss="modal">Cancel</button>
+                            <button type="button"
+                                class="btn btn-primary custom-button" ng-click="createProfile1()">Submit</button>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+
+            <!-- <div class="panel-footer" >
+         
+    </div> -->
+
+        </div>
+    </div>
+</div>
+</form>
+</div>

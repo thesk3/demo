@@ -1,0 +1,484 @@
+<style>
+    .row {
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+
+
+    md-checkbox {
+        box-sizing: border-box;
+        display: inline-block;
+        margin-bottom: 16px;
+        white-space: nowrap;
+        cursor: pointer;
+        outline: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        position: relative;
+        min-width: 20px;
+        min-height: 20px;
+        margin-left: 0;
+        margin-right: 2px;
+        margin-top: 11px;
+    }
+</style>
+<div class="container-fluid">
+    <div class="panel" style="min-height: 427px;border-radius: 11px;    padding: 14px;">
+        <div class="row" style="">
+            <div class="col-sm-3 imgUp">
+                <div class="imagePreview circlrImg"></div>
+                <label class="btn  btn-primary2">
+                    Upload<input type="file" class="uploadFile img" value="Upload Photo"
+                        style="width: 0px;height: 0px;overflow: hidden;">
+                </label>
+                <div class="CheckboxCustom">
+                    <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+
+                    </md-checkbox>
+                    <md-checkbox ng-model="data.cb2" aria-label="Checkbox 1">
+
+                    </md-checkbox>
+                    <md-checkbox ng-model="data.cb3" aria-label="Checkbox 1">
+
+                    </md-checkbox>
+                    <md-checkbox ng-model="data.cb4" aria-label="Checkbox 1">
+
+                    </md-checkbox>
+                    <md-checkbox ng-model="data.cb5" aria-label="Checkbox 1">
+
+                    </md-checkbox>
+                </div>
+                <div><label>Profile Verified 3 out of 5{{ data.cb1 }}</label>
+                </div>
+                <div><label>Profile Created by Self</label>
+                </div>
+
+            </div>
+
+
+            <!--    --------------------          2nd block    ----------------------      -->
+            <div class="col-sm-3 block-boredr">
+                <div id="name">
+                    <label style="color: blue;    font-weight: bold;">Akshy kumar</label><label style="    padding-left: 20px;
+        font-size: 10px;
+        ">(Age-25)</label>
+                </div>
+
+                <div id="Positiuon">
+                    <label class="story-msg ">Software Devloper</label>
+                </div>
+                <div class="">
+                    <div class="user-info">
+                        <i class="fas fa-map-marker-alt my-profile-font"></i> <label class="my-profile-label"> Lives In
+                            Pune, Maharashtra</label>
+                    </div>
+                    <div class="user-info">
+                        <i class="fas fa-home my-profile-font" aria-hidden="true"></i> <label
+                            class="my-profile-label">From Latur, Maharashtra
+
+                        </label>
+                    </div>
+                    <div class="user-info">
+                        <i class="far fa-heart my-profile-font"></i><label class="my-profile-label">Never Married
+
+                        </label>
+                    </div>
+                    <div class="user-info">
+                        <i class="far fa-envelope my-profile-font"></i> <label
+                            class="my-profile-label">admin@gmail.com</label>
+                    </div>
+                    <div class="user-info">
+                        <i class="fas fa-mobile-alt my-profile-font"></i> <label
+                            class="my-profile-label">1234567890</label>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!--    --------------------          3rd block    ----------------------      -->
+
+            <div class="col-sm-3 block-boredr" style="padding-top: 72px;">
+                <div class="row responssive-block">
+                    <div class="col-sm-6 user-info"><label class="my-profile-label">DOB</label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">14 Apr 1996</label> </div>
+                </div>
+                <div class="row responssive-block">
+
+                    <div class="col-sm-6 user-info"><label class="my-profile-label">Height</label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">5' 7"</label> </div>
+                </div>
+                <div class="row responssive-block">
+
+                    <div class="col-sm-6 user-info"><label class="my-profile-label">Skin Tone</label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">Wheatis </label> </div>
+                </div>
+                <div class="row responssive-block">
+
+                    <div class="col-sm-6 user-info"><label class="my-profile-label">Body Type</label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">Average</label> </div>
+
+                </div>
+                <div class="row responssive-block">
+
+                    <div class="col-sm-6 user-info"><label class="my-profile-label">Weight</label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">60 Kg</label> </div>
+                </div>
+            </div>
+
+            <!--    --------------------          4th block    ----------------------      -->
+
+            <div class="col-sm-3 block-boredr" style="       padding-top: 72px;">
+                <div class="row responssive-block">
+                    <div class="col-sm-6 user-info"><label class="my-profile-label">Religion</label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">14 Apr 1996</label> </div>
+                </div>
+
+                <div class="row responssive-block">
+                    <div class="col-sm-6 user-info"><label class="my-profile-label">Caste</label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">5' 7"</label> </div>
+                </div>
+                <div class="row responssive-block">
+                    <div class="col-sm-6 user-info"><label class="my-profile-label">Community</label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">Wheatis </label> </div>
+                </div>
+                <div class="row responssive-block">
+                    <div class="col-sm-6 user-info"><label class="my-profile-label"> Mother Tongue</label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">Average</label> </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="row color-bar">
+            <center style="color: white;padding: 18px;
+font-size: 14px;"><label>My Profile</label></center>
+        </div>
+
+        <!-- <div class="row" style=" margin-top: 12px;  height: 34px;
+        border: 1px solid var(--main-primary-color);
+        text-align: center;
+        padding: 8px; ">
+            <div class="col-sm-4"  >
+                    <label class="my-profile-label">Basic Details
+
+                        </label>
+            </div>
+            <div class="col-sm-4"  >
+                    <label class="my-profile-label">Religion & Caste
+
+                        </label>
+                </div>
+                <div class="col-sm-4 "  >
+                        <label class="my-profile-label">About Yourself
+
+                            </label>
+                    </div>
+        </div> -->
+        <!--    --------------------          1st card row    ----------------------      -->
+
+        <div class="row " style=" padding-top: 22px; ">
+
+            <div class="col-sm-4 my-profile-card card" style=" ">
+                <div class="row my-profile-card-header" style="margin-right: -15px;
+    margin-left: -15px;"> <label ui-sref="home.editmyprofile "class="my-profile-label">
+                        Basic Details
+
+                    </label> </div>
+                <div class="row responssive-block">
+                    <div class="col-sm-6 user-info"><label class="my-profile-label">Profile Created By</label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">{{myProfileData.basicDetails.profileCreatedFor}}</label> </div>
+                </div>
+                <div class="row responssive-block">
+                    <div class="col-sm-6 user-info"><label class="my-profile-label">Email ID </label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">{{myProfileData.basicDetails.email}}</label> </div>
+                </div>
+                <div class="row responssive-block">
+                    <div class="col-sm-6 user-info"><label class="my-profile-label">Primary Mobile No:</label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">{{myProfileData.basicDetails.primaryMobile}} </label> </div>
+                </div>
+                <div class="row responssive-block">
+                    <div class="col-sm-6 user-info"><label class="my-profile-label"> Secondary Mobile No:</label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">{{myProfileData.basicDetails.secondaryMobile}} </label> </div>
+                </div>
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3 my-profile-card">
+                <div class="row my-profile-card-header" style="margin-right: -15px;
+                    margin-left: -15px;"> <label class="my-profile-label">
+                        Religion & Caste
+                    </label> </div>
+                <div class="row responssive-block">
+                    <div class="col-sm-6 user-info"><label class="my-profile-label">Religion</label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">{{myProfileData.religionDetails.religion}}</label> </div>
+                </div>
+                <div class="row responssive-block">
+                    <div class="col-sm-6 user-info"><label class="my-profile-label">Caste</label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">{{myProfileData.religionDetails.caste}}</label> </div>
+                </div>
+                <div class="row responssive-block">
+                    <div class="col-sm-6 user-info"><label class="my-profile-label">Community</label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">{{myProfileData.religionDetails.community}} </label> </div>
+                </div>
+                <div class="row responssive-block">
+                    <div class="col-sm-6 user-info"><label class="my-profile-label"> Mother Tongue</label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">{{myProfileData.religionDetails.motherTongue}}</label> </div>
+                </div>
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3 my-profile-card">
+                <div class="row my-profile-card-header" style="margin-right: -15px;margin-left: -15px;"> <label
+                        class="my-profile-label">
+                        About Yourself
+                    </label> </div>
+                <label class="my-profile-label">{{myProfileData.aboutSelf}}
+                </label>
+            </div>
+        </div>
+
+        <!--    --------------------          2nd card row    ----------------------      -->
+        <div class="row " style=" padding-top: 22px; ">
+            <div class="col-sm-4 my-profile-card card" style=" ">
+                <div class="row my-profile-card-header" style="margin-right: -15px;
+margin-left: -15px;"> <label class="my-profile-label">
+                        Personal Details
+
+                    </label> </div>
+                <div class="row responssive-block">
+                    <div class="col-sm-6 user-info"><label class="my-profile-label">Name</label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">{{myProfileData.personalDetails.name}}</label> </div>
+                </div>
+                <div class="row responssive-block">
+                    <div class="col-sm-6 user-info"><label class="my-profile-label">Gender</label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">{{myProfileData.personalDetails.gender}}</label> </div>
+                </div>
+                <div class="row responssive-block">
+                    <div class="col-sm-6 user-info"><label class="my-profile-label">Date of Birth</label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">{{myProfileData.personalDetails.dob}}</label> </div>
+                </div>
+                <div class="row responssive-block">
+                    <div class="col-sm-6 user-info"><label class="my-profile-label"> Marital Status</label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">{{myProfileData.personalDetails.maritalStatus}}</label> </div>
+                </div>
+                <div class="row responssive-block">
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">Children </label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">{{myProfileData.personalDetails.children}}</label> </div>
+                </div>
+                <div class="row responssive-block" ng-show="myProfileData.personalDetails.children=='yes'">
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">No. of Children </label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">{{myProfileData.personalDetails.name}}</label> </div>
+                </div>
+
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3 my-profile-card">
+                <div class="row my-profile-card-header" style="margin-right: -15px;
+                margin-left: -15px;"> <label class="my-profile-label">
+                        Educations Details
+
+
+                    </label> </div>
+                <div class="row responssive-block">
+                    <div class="col-sm-6 user-info"><label class="my-profile-label">Education</label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">{{myProfileData.educationDetails.education}}</label>
+                    </div>
+                </div>
+                <div class="row responssive-block">
+                    <div class="col-sm-6 user-info"><label class="my-profile-label">Education in detail</label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">{{myProfileData.educationDetails.educationDetail}} </label> </div>
+                </div>
+                <div class="row responssive-block">
+                    <div class="col-sm-6 user-info"><label class="my-profile-label">Occupation</label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">{{myProfileData.educationDetails.occupation}} </label> </div>
+                </div>
+                <div class="row responssive-block">
+                    <div class="col-sm-6 user-info"><label class="my-profile-label"> Employment Type</label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">{{myProfileData.educationDetails.employmentType}} </label> </div>
+                </div>
+                <div class="row responssive-block">
+                    <div class="col-sm-6 user-info"><label class="my-profile-label">Country of Residence</label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">{{myProfileData.educationDetails.country}} </label> </div>
+                </div>
+                <div class="row responssive-block">
+                    <div class="col-sm-6 user-info"><label class="my-profile-label">Annual Income</label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">{{myProfileData.educationDetails.annualIncome}} </label> </div>
+                </div>
+
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3 my-profile-card">
+                <div class="row my-profile-card-header" style="margin-right: -15px;
+margin-left: -15px;"> <label class="my-profile-label">
+                        Family Background
+
+
+
+                    </label> </div>
+
+                <label class="my-profile-label">{{myProfileData.familyBackground}}
+                </label>
+
+            </div>
+        </div>
+
+
+        <!--    --------------------          3rd card row    ----------------------      -->
+        <div class="row " style=" padding-top: 22px; ">
+            <div class="col-sm-4 my-profile-card card" style=" ">
+                <div class="row my-profile-card-header" style="margin-right: -15px;
+    margin-left: -15px;"> <label class="my-profile-label">
+                        Features & Health
+
+                    </label> </div>
+                <div class="row responssive-block">
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">Height</label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">{{myProfileData.health.height}} (cm)</label> </div>
+                </div>
+                <div class="row responssive-block">
+                    <div class="col-sm-6 user-info"><label class="my-profile-label">Weight</label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">{{myProfileData.health.Weight}}</label> </div>
+                </div>
+                <div class="row responssive-block">
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">Skin Tone</label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">{{myProfileData.health.skinTone}}</label> </div>
+                </div>
+                <div class="row responssive-block">
+                    <div class="col-sm-6 user-info"><label class="my-profile-label">Body Type</label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">{{myProfileData.health.bodyType}}</label> </div>
+                </div>
+                <div class="row responssive-block">
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">Health Information</label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">{{myProfileData.health.healthInformation}}</label> </div>
+                </div>
+                <div class="row responssive-block">
+                    <div class="col-sm-6 user-info"><label class="my-profile-label"> Disability</label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">{{myProfileData.health.disability}}</label> </div>
+                </div>
+                <div class="row responssive-block">
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">Glasses</label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">{{myProfileData.health.glasses}}</label> </div>
+                </div>
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3 my-profile-card">
+                <div class="row my-profile-card-header" style="margin-right: -15px;
+                    margin-left: -15px;"> <label class="my-profile-label">
+                        Horoscope Details
+
+
+                    </label> </div>
+                <div class="row responssive-block">
+                    <div class="col-sm-6 user-info"><label class="my-profile-label">DOB</label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">{{myProfileData.horoscope.dob}}</label> </div>
+                </div>
+                <div class="row responssive-block">
+                    <div class="col-sm-6 user-info"><label class="my-profile-label">Time</label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">{{myProfileData.horoscope.time}}</label> </div>
+                </div>
+                <div class="row responssive-block">
+                    <div class="col-sm-6 user-info"><label class="my-profile-label">Place of Birth</label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">{{myProfileData.horoscope.placeOfBirth}} </label> </div>
+                </div>
+                <div class="row responssive-block">
+                    <div class="col-sm-6 user-info"><label class="my-profile-label">Rashi</label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">{{myProfileData.horoscope.rashi}}</label> </div>
+                </div>
+                <div class="row responssive-block">
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">Nakshatra</label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">{{myProfileData.horoscope.nakshatra}}</label> </div>
+                </div>
+                <div class="row responssive-block">
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">Manglik</label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">{{myProfileData.horoscope.manglik}}</label> </div>
+                </div>
+
+
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3 my-profile-card">
+                <div class="row my-profile-card-header" style="margin-right: -15px;
+    margin-left: -15px;"> <label class="my-profile-label">Life Style</label> </div>
+                <div class="row responssive-block">
+                    <div class="col-sm-6 user-info"><label class="my-profile-label">Family Values</label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">{{myProfileData.lifeStyle.familyValues}} </label> </div>
+                </div>
+                <div class="row responssive-block">
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">Diet</label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">{{myProfileData.lifeStyle.diet}}</label> </div>
+                </div>
+                <div class="row responssive-block">
+                    <div class="col-sm-6 user-info"><label class="my-profile-label">Smoke</label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">{{myProfileData.lifeStyle.smoke}}</label> </div>
+                </div>
+                <div class="row responssive-block">
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">Drinks</label> </div>
+                    <div class="col-sm-6 user-info"> <label class="my-profile-label">{{myProfileData.lifeStyle.drinks}} </label> </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="row" style="      margin-top: 31px;
+        border: 1px solid purple;
+        padding: 15px;
+        ">
+            <div class="col-sm-3 imgUp">
+                <div class="imagePreview"></div>
+                <label class="btn btn-primary btn-primary1">
+                    Upload<input type="file" class="uploadFile img" value="Upload Photo"
+                        style="width: 0px;height: 0px;overflow: hidden;">
+                </label>
+            </div>
+            <div class="col-sm-9">
+                <div class="col-sm-3 imgUp">
+                    <div class="imagePreview"></div>
+                    <label class="btn btn-primary btn-primary1">
+                        Upload<input type="file" class="uploadFile img" value="Upload Photo"
+                            style="width: 0px;height: 0px;overflow: hidden;">
+                    </label>
+                </div><!-- col-2 -->
+                <div class="col-sm-3 imgUp">
+                    <div class="imagePreview"></div>
+                    <label class="btn btn-primary btn-primary1">
+                        Upload<input type="file" class="uploadFile img" value="Upload Photo"
+                            style="width: 0px;height: 0px;overflow: hidden;">
+                    </label>
+                </div><!-- col-2 -->
+                <div class="col-sm-3 imgUp">
+                    <div class="imagePreview"></div>
+                    <label class="btn btn-primary btn-primary1">
+                        Upload<input type="file" class="uploadFile img" value="Upload Photo"
+                            style="width: 0px;height: 0px;overflow: hidden;">
+                    </label>
+                </div><!-- col-2 -->
+                <div class="col-sm-3 imgUp">
+                    <div class="imagePreview"></div>
+                    <label class="btn btn-primary btn-primary1">
+                        Upload<input type="file" class="uploadFile img" value="Upload Photo"
+                            style="width: 0px;height: 0px;overflow: hidden;">
+                    </label>
+                </div><!-- col-2 -->
+            </div>
+
+
+
+        </div>
+
+
+
+
+        <!-- <div class="row" style="height: 34px; border: 1px solid purple">
+                <div class="col-sm-8 col-md-offset-2" style="height: 34px; border: 1px solid purple">
+            
+                    </div>
+            
+        </div> -->
+
+
+        <!-- end -->
+    </div>
+
+</div>

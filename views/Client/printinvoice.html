@@ -1,0 +1,487 @@
+
+<style>
+input {
+	border: none;
+}
+
+.line {
+	border: 1px solid;
+}
+
+.page {
+	width: 21cm;
+	min-height: 24.7cm;
+	padding: 0cm;
+	margin: 1cm auto;
+	/*border: 1px black solid;*/
+	border-radius: 5px;
+	background: white;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+@page {
+	size: auto;
+	margin: 0mm;
+}
+
+a {
+	color: white;
+	text-decoration: none;
+}
+
+.subpage {
+	    padding-top: 23px;
+	/*border: 2px #cccc solid;*/
+	height: 256mm;
+	/* outline: 2cm #FFEAEA solid;*/
+}
+
+@page {
+	size: A4;
+	margin: 0mm;
+	
+}
+
+@media print {
+	.page {
+		margin: 0;
+		border: initial;
+		border-radius: initial;
+		width: initial;
+		min-height: initial;
+		box-shadow: initial;
+		background: initial;
+		page-break-after: always;
+	}
+	.btn-footer {
+		display: none;
+	}
+	#btnp {
+		display: none;
+	}
+	.break-word {
+		word-wrap: break-word;
+	}
+	.footer{
+		display: none;
+	
+	}
+}
+
+.break-word {
+	word-wrap: break-word;
+}
+</style>
+<div class="container">
+	<form name="newInvoice" novalidate autocomplete="off"
+		ng-init="init();tab1=false;tab2=false;tab3=false;">
+
+		<div class="page">
+			<div class="subpage">
+			<div class="row" style="    background-color: #ffffff !important;
+    width: 100%;
+    height: 31px;
+   
+    margin-top: -20px;
+    margin-left: 0px;">
+			
+			</div>
+				<div class="panel panel-deva" style="min-height: 365px;">
+					<div class="panel-heading ph"
+						style="min-height: 68px;    border: 2px solid #ff9500 !important; -webkit-print-color-adjust: exact;""
+   >
+
+						<Label
+							style="font-size: 22px;  color: white !important; -webkit-print-color-adjust: exact;"><Strong
+							style="color: #060606 !important; -webkit-print-color-adjust: exact;">{{invoiceu.name}}</Strong></Label></br>
+						<div ng-show="invoiceu.billingEntity=='2'">
+							<Label
+								style="font-size: 14px;  color: #060606 !important; -webkit-print-color-adjust: exact;">(Manoj
+								Chemburkar H.U.F)</Label></br>
+						</div>
+						<Label
+							style="font-size: 12px;  color: #060606 !important; -webkit-print-color-adjust: exact;">Land
+							Surveyor</Label>
+
+					</div>
+					<div class="panel-body">
+						<!-- <div class="row" align="center"
+					style="background-color: whitesmoke;">
+					<Label style="font-size: 15px;">Invoice</Label>
+				</div> -->
+
+
+						<div class="row">
+							<div
+								style="float: left; width: 100%; position: absolute; display: inline-flex;">
+								<div style="margin-left: 48px; width: 78px; float: left;">
+									<Label style="font-size: 13px;"><b>Invoice No</b></Label>
+								</div>
+								<div style="float: left; margin-left: 7px; width: 300px">
+									<Label style="font-size: 13px;"  ng-show="invoiceu.billingEntity=='1'">{{idCode}} /
+										{{invoiceDate}} / {{invoiceu.invoiceMCA}}</Label>
+										<Label style="font-size: 13px;"  ng-show="invoiceu.billingEntity=='2'">{{idCode}} /
+										{{invoiceDate}} / {{invoiceu.invoiceCA}}</Label>
+								</div>
+								<div style="float: left; width: 276px">
+									<span style="font-size: 13px; float: right;"
+										ng-bind="invoiceu.createdDate|date:'dd-MMM-yyyy'"></span>
+								</div>
+
+
+							</div>
+						</div>
+						<div class="row">
+							<div
+								style="float: left; width: 100%; display: inline-flex; position: absolute; margin-top: 30px;">
+								<div style="margin-left: 69px; width: 78px; float: left;">
+									<Label style="font-size: 13px;"><b>Bill To</b></Label>
+								</div>
+								<div style="float: left; margin-left: -13px; width: 270px">
+									<Label style="font-size: 13px;">{{invoiceu.clientName}}</Label>
+								</div>
+								<div style="float: left; width: 250px;">
+									<Label style="font-size: 13px; margin-left: 9px;"> <b> Client GST</b>
+									</Label>
+								</div>
+								<div style="float: left; width: 26px; margin-left: -160px;">
+									<Label style="font-size: 13px;">{{invoiceu.gstn}}</Label>
+								</div>
+
+							</div>
+
+						</div>
+
+
+						<div class="row">
+							<div
+								style="float: left; width: 100%; position: relative; margin-top: 68px;">
+								<div style="margin-left: 24px; width: 110px; float: left;">
+									<Label style="font-size: 13px;"><b>Office address</b></Label>
+								</div>
+								<div
+									style="float: left; width: 220px;padding-left: 7px; border: 1px solid darkgrey; height: 86px; border-radius: 5px;">
+
+									<lable ng-bind="invoiceu.clientOfficeAddress"></lable>
+								</div>
+								<div style="margin-left: 51px; width: 110px; float: left;">
+									<Label style="font-size: 13px;"><b>Site address</b></Label>
+								</div>
+
+								<div
+									style="float: left; width: 220px;padding-left: 7px; border: 1px solid darkgrey; height: 86px; border-radius: 5px;">
+
+									<lable ng-bind="invoiceu.siteAddressSelected"></lable>
+								</div>
+
+							</div>
+						</div>
+
+						<!-- Table 1 Start -->
+
+						<div ng-if="rows[0].amount!=0" style="margin-top: 19px;">
+							<!-- <label ng-click="removeTable(tab)"
+						style="margin-top: 5px; color: red; float: right;">Remove
+						Section</label> -->
+							<table dt-options="vm.dtOptions"
+								ng-keydown="addRow($event,'#myTable1');"
+								class="table table-striped table-bordered" id="myTable1"
+								width="100%" cellspacing="0" style="align-content: center;">
+								<thead>
+									<tr align="center" style="background: #e6e6e6; color: black;">
+										<th style="width: 20px;">SR.No</th>
+										<th style="width: 31% px;"><center>Job
+												Description</center></th>
+										<th><center>Qty</center></th>
+										<th><center>Unit</center></th>
+										<th><center>Rate</center></th>
+										<th><center>Amount</center></th>
+										<!-- <th><center>Delete</center></th> -->
+									</tr>
+								</thead>
+								<tbody>
+									<tr align="center" ng-repeat="rs in rows track by $index">
+
+										<td>{{$index+1}}</td>
+										<td><lable ng-bind="rs.description"></lable></td>
+										<td><lable ng-bind="rs.qty"></lable></td>
+										<td><lable ng-bind="rs.unit"></lable></td>
+										<td><lable ng-bind="rs.rate"></lable></td>
+										<td><lable ng-bind="rs.amount"></lable></td>
+										<!-- <td><i class="fa fa-trash-o"
+									style="font-size: 15px; color: red;" ng-click="deleteRows(rs)"></i></td>
+		 -->
+									</tr>
+
+								</tbody>
+							</table>
+
+							<div class="row">
+								<div>
+									<label style="float: right; margin-right: 80px;">Sub
+										Total :</label>
+								</div>
+								<div>
+									<div class="form-group">
+										<label
+											style="float: right; margin-right: 42px; margin-top: -31px;">{{invoiceu.grossamount}}</label>
+									</div>
+								</div>
+
+
+							</div>
+						</div>
+
+						<!-- Table 2 strart -->
+
+						<div ng-if="rows2[0].amount!=0" style="margin-top: 19px;">
+							<!-- <label ng-click="removeTable(tab)"
+						style="margin-top: 5px; color: red; float: right;">Remove
+						Section</label> -->
+
+
+							<table dt-options="vm.dtOptions"
+								ng-keydown="addRow2($event,'#myTable2');"
+								class="table table-striped table-bordered" id="myTable2"
+								width="100%" cellspacing="0" style="align-content: center;">
+								<thead>
+									<tr align="center" style="background: #e6e6e6; color: black;">
+										<th style="width: 20px;">SR.No</th>
+										<th style="width: 31% px;"><center>Job
+												Description</center></th>
+										<th><center>Rate</center></th>
+										<th><center>Amount</center></th>
+										<!-- <th><center>Delete</center></th> -->
+									</tr>
+								</thead>
+								<tbody>
+									<tr align="center" ng-repeat="rs in rows2 track by $index">
+
+										<td>{{$index+1}}</td>
+										<td><lable ng-bind="rs.description"></td>
+										<td>Lumpsum</td>
+										<td><lable ng-bind="rs.amount"></td>
+										<!-- <td><i class="fa fa-trash-o" style="font-size: 15px; color: red;" ng-click="deleteRows2(rs)"></i></td> -->
+									</tr>
+
+
+								</tbody>
+							</table>
+							<div class="row">
+								<div>
+									<label style="float: right; margin-right: 80px;">Sub
+										Total : </label>
+								</div>
+								<div>
+									<div class="form-group">
+										<label
+											style="float: right; margin-right: 42px; margin-top: -31px;">{{invoiceu.grossamount2}}</label>
+									</div>
+								</div>
+
+
+							</div>
+						</div>
+						<!-- Table 3 Start -->
+						<div ng-if="rows3[0].amount!=0" style="margin-top: 19px;">
+							<!-- <label ng-click="removeTable(tab)"
+						style="margin-top: 5px; color: red; float: right;">Remove
+						Section</label> -->
+
+							<table dt-options="vm.dtOptions"
+								ng-keydown="addRow3($event,'#myTable3');"
+								class="table table-striped table-bordered" id="myTable3"
+								width="100%" cellspacing="0" style="align-content: center;">
+								<thead>
+									<tr align="center" style="background: #e6e6e6; color: black;">
+										<th style="width: 20px;">SR.No</th>
+										<th style="width: 31% px;"><center>Job
+												Description</center></th>
+										<th><center>Qty</center></th>
+										<th><center>Unit</center></th>
+										<th><center>Rate</center></th>
+										<th><center>Amount</center></th>
+										<!-- <th><center>Delete</center></th> -->
+
+									</tr>
+								</thead>
+								<tbody>
+									<tr align="center" ng-repeat="rs in rows3 track by $index">
+
+										<td>{{$index+1}}</td>
+										<td><lable ng-bind="rs.description"></lable></td>
+										<td><input type="number" ng-change="grossamt3(rs)"
+											name="qty" ng-model="rs.qty"></td>
+										<td>Pervisit</td>
+										<td><input type="number" ng-change="grossamt3(rs)"
+											name="rate" ng-model="rs.rate"></td>
+										<td><lable ng-bind="rs.amount"></td>
+										<!-- <td><i class="fa fa-trash-o"
+									style="font-size: 15px; color: red;" ng-click="deleteRows3(rs)"></i></td> -->
+									</tr>
+								</tbody>
+							</table>
+							<div class="row">
+								<div>
+									<label style="float: right; margin-right: 80px;">Sub
+										Total : </label>
+								</div>
+								<div>
+									<div class="form-group">
+										<label
+											style="float: right; margin-right: 42px; margin-top: -31px;">{{invoiceu.grossamount3}}</label>
+									</div>
+								</div>
+							</div>
+
+
+
+
+						</div>
+
+						<!-- Table 3 end -->
+						<div class="row"
+							Style=" margin-bottom: 18px; margin-left: 1px;">
+							<div Style="width: 120px">
+								<b style="width: 140px; font-size: 13px; float: left;">Total
+									Amount : </b>
+							</div>
+							<div
+								Style="border: 1px solid #ccc; width: 616px; float: left; padding: 4px;">
+
+								<lable ng-bind="total"></lable>
+								<!-- <i class="fa fa-inr" style="    margin-left: -26px;"></i> -->
+							</div>
+						</div>
+						<div class="row"
+							Style=" margin-bottom: 18px; margin-left: 1px;">
+							<div Style="width: 120px">
+								<b style="width: 140px; font-size: 13px; float: left;">Amount
+									In Words : </b>
+							</div>
+							<div
+								Style="border: 1px solid #ccc; width: 616px; float: left; padding: 4px;">
+
+								<lable ng-bind="invoiceu.total|uppercase"></lable>
+
+							</div>
+
+
+						</div>
+						<!-- 	<div class="row">
+					<div class="col-sm-2">
+						<center>
+								<b style="font-size: 13px;">Amount In Rupees</b>
+						</center>
+					</div>
+					<div class="col-sm-10">
+						<div class="form-group">
+							<input type="number" class="form-control " 
+								name="total" ng-model="invoiceu.total"> 
+						</div>
+					</div>
+
+
+				</div> -->
+						<div class="line"></div>
+
+
+						<div class="row"
+							Style="width: 100%; display: inline-flex; margin-left: 1px;">
+							<div class="" Style="width: 535px ;border: 1px solid grey; min-height: 135px; margin-left: -15px; padding: 5px;">
+								<label>Remark : {{invoiceu.remarks}}</label>
+							</div>
+<div class="" Style="width: 23px">
+								<label></label>
+							</div>
+							<div class=""
+								Style="border: 1px solid #ccc; height: 138px; width: 351px; float: left; padding: 4px;">
+								<label>A/c Holder :{{invoiceu.name}} </br> Name of Bank:
+									{{invoiceu.bankName}}.</br> {{invoiceu.branch}} </br> IFSC:
+									{{invoiceu.ifsc}}</br> A/c No. {{invoiceu.accountNumber}}</br>
+																			<label
+						ng-show="invoiceu.accountType!=null">A/cType:
+							{{invoiceu.accountType}}</br>PAN No. : {{invoiceu.pan}}</label>
+							 <label
+						ng-show="invoiceu.accountType==null">PAN No. : {{invoiceu.pan}}</label>
+										
+								</label>
+							</div>
+						</div>
+
+
+
+
+
+
+						<div class="row" style="width: 100%; display: inline-block;">
+							<div >
+								<label ng-show="invoiceu.billingEntity == '1'" >For MANOJ CHEMBURKAR</label>
+								<label ng-show="invoiceu.billingEntity == '2'" > For Chemburkar & Associates </br>(Manoj Chemburkar HUF)</label>
+								</br> <img src="images/sign.jpg"
+									style="height: 56px; width: 110px;">
+
+							</div>
+
+							<div >
+								<label style="float: right;    margin-top: -67px;">CERTIFIED FOR PAYMENT </label></br>
+
+							</div>
+
+
+						</div>
+						<div class="row">
+							<div class="col-sm-6">
+								<center>
+									<label ng-show="invoiceu.billingEntity == '1'"
+										style="float: left;">Proprietor</label> <label
+										ng-show="invoiceu.billingEntity == '2'" style="float: left;">
+										Karta</label>
+								</center>
+							</div>
+							<div class="col-sm-6"></div>
+							<center>
+								<label style="float: right; margin-right: 19px;">Name &
+									Signature of Receiver </label>
+							</center>
+						</div>
+						<div class="col-md-12"
+							style="background-color: #636363 !important; color: white !important; -webkit-print-color-adjust: exact;">
+							<center>
+								<label  style="color: white !important; -webkit-print-color-adjust: exact;" ng-show="invoiceu.billingEntity=='2'">D / 126,
+									Ganesh Krupa, Chembur Gaothan, Chembur, Mumbai - 400 071.</br> Tel :
+									9820355877 email : chemburkar.assoc@gmail.com
+								</label> <label style="color: white !important; -webkit-print-color-adjust: exact;" ng-show="invoiceu.billingEntity=='1'">101, Manoj
+									Kunj, Old Cabin Road, Opp. Saraswati Vidyalaya, Kharigaon,
+									Bhayandar (East), Dist. Thane 401 105.</br> Tel: 022 - 2814 1184
+									email : manojchemburkar@rediffmail.com
+								</label>
+							</center>
+						</div>
+
+						<div class="col-md-12" id="btnp">
+							<div align="center" style="margin-top: 10px;">
+								<!-- <a onclick="this.href='data:text/html;charset=UTF-8,'+encodeURIComponent(document.documentElement.outerHTML)" href="#" download="page.html">Download</a>
+					
+			 -->
+								<button type="button" "
+							
+							ng-click="cancel()"
+									class="btn btn-deva">Cancel</button>
+								<button type="button" ng-click="printPage()"
+									class="btn btn-deva">Print</button>
+							</div>
+							<!-- onClick="window.print()" -->
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+	</form>
+
+
+</div>
+
+

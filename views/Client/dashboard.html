@@ -1,0 +1,189 @@
+
+<style>
+.cardmonth {
+	margin-top: -23px;
+}
+
+#div-wrapper {
+	white-space: nowrap;
+	max-width: 100%;
+	margin-top: 52px;
+}
+
+.single-div {
+	width: 21%;
+	display: inline-block;
+	text-align: center;
+	vertical-align: middle;
+	margin: 0 3%;
+	white-space: normal;
+	min-height: 142px;
+	border-radius: 4px;
+	background-color: white;
+	box-shadow: 4px 5px 2px 0px rgb(220, 220, 220);
+}
+
+/* Mobile */
+@media screen and (max-width: 480px) {
+	.single-div {
+		display: block;
+		width: 100%;
+		margin: 0 auto;
+		margin-top: 40px;
+	}
+}
+</style>
+
+<div class="container">
+	<div id="div-wrapper" ng-init="init();init2();init3();">
+
+		<div class="panel single-div bor"
+			style="border: 3px solid orange; margin-left: 0px;">
+			<div class="cardmonth">
+				<label class="cardmonth"><b>{{thisMonth}} &nbsp;
+						{{thisYear}}</b></label>
+			</div>
+			<div class="cardName">
+				<label>Visits</label>
+			</div>
+			<div class="card-header">
+				<div class="icons" style="background-color: orange;">
+					<i class="fa fa-calendar cardIcon"></i>
+				</div>
+			</div>
+			<div class="cardBody">
+				<div class="row pad">
+					<div class="col-sm-4">Scheduled</div>
+					<div class="col-sm-4">{{ScheduledCount}}</div>
+				</div>
+
+				<div class="row pad">
+					<div class="col-sm-4">Completed</div>
+					<div class="col-sm-4">{{CompletedCount}}</div>
+				</div>
+
+				<div class="row pad">
+					<div class="col-sm-4">Pending</div>
+					<div class="col-sm-4">{{PendingCount}}</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class=" panel single-div bor" style="border: 3px solid #9966ff;">
+			<div class="cardmonth">
+				<label class="cardmonth"><b>{{nextMonth}} &nbsp;
+						{{thisYear}}</b> </label>
+			</div>
+			<div class="cardName">
+				<label>Visits</label>
+			</div>
+			<div class="card-header">
+
+				<div class="icons" style="background-color: #9966ff;">
+					<i class="fa fa-calendar cardIcon"></i>
+				</div>
+			</div>
+			<div class="cardBody">
+
+				<div class="row pad">
+					<div class="col-sm-4">Scheduled</div>
+					<div class="col-sm-4">{{nextScheduledCount}}</div>
+				</div>
+
+				<div class="row pad">
+					<div class="col-sm-4">Completed</div>
+					<div class="col-sm-4">{{nextCompletedCount}}</div>
+				</div>
+
+				<div class="row pad">
+					<div class="col-sm-4">Pending</div>
+					<div class="col-sm-4">{{nextPendingCount}}</div>
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="panel single-div bor" style="border: 3px solid red;">
+			<div class="cardName">
+				<label>Invoice</label>
+			</div>
+			<div class="card-header">
+				<div class="icons" style="background-color: red;">
+
+					<i class="fa fa-calendar cardIcon"></i>
+				</div>
+			</div>
+			<div class="cardBody">
+
+				<div class="row pad">
+					<div class="col-sm-4">Created</div>
+					<div class="col-sm-4">{{InvoiceCreatedCount}}</div>
+				</div>
+
+				<div class="row pad">
+					<div class="col-sm-4">Pending</div>
+					<div class="col-sm-4">{{InvoiceCompletedCount}}</div>
+				</div>
+
+				<div class="row pad">
+					<!-- <div class="col-sm-4">Unpaid</div>
+					<div class="col-sm-4">22</div> -->
+				</div>
+
+
+			</div>
+		</div>
+
+		<div class="panel single-div bor" style="border: 3px solid #7d3131db;">
+			<div class="cardName">
+				<label>SMS</label>
+			</div>
+			<div class="card-header">
+				<div class="icons" style="background-color: #7d3131db;">
+					<i class="fa fa-envelope cardIcon"></i>
+				</div>
+			</div>
+			<div class="cardBody">
+				<div class="row pad">
+					<div class="col-sm-4">Balance</div>
+					<div class="col-sm-4">{{smsCount}}</div>
+				</div>
+
+				<!-- <div class="row pad">
+					<div class="col-sm-4">Completed</div>
+					<div class="col-sm-4">22</div>
+				</div>
+
+				<div class="row pad">
+					<div class="col-sm-4">Pending</div>
+					<div class="col-sm-4">22</div>
+				</div> -->
+
+			</div>
+
+
+		</div>
+
+	</div>
+
+	</br> </br>
+
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="panel cal" style="">
+
+				<div id="calendar"></div>
+			</div>
+		</div>
+		
+		<div class="col-sm-6">
+			<div class="panel visitGraph" style="">
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+				
+			</div>
+		</div>
+	</div>
+
+</div>

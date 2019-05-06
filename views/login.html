@@ -1,0 +1,345 @@
+<style>
+md-select.md-default-theme .md-select-value.md-select-placeholder, md-select .md-select-value.md-select-placeholder {
+	color: #515048;
+}
+</style>
+
+
+<div class="container-fluid">
+	<form name="homeForm">
+		<div class="row homeHeader">
+			<div class="col-sm-3">
+				<div class="navbar-brand"> <a href="#"><img src="images/logo.jpg" alt="matrimony" style="height: 56px;"
+							class="img-responsive"></a>
+					<!-- <h1 class="logo-text">India’s 1st Matrimonial Platform linked with Aadhaar</h1> -->
+				</div>
+			</div>
+	
+
+			<div class="col-sm-6 center">
+				<div class="">
+	
+					<label class=" label-body">Join our 2 million success stories</label>
+	
+					<md-button class="md-raised cd-button"   style="color:white;  float: right;    height: 29px;
+						margin-top: 10px;
+						  margin-top: 10px;
+	  background-color:var(--main-primary-color);"><label    ng-click="showTabDialog1($event);" class=" label-font" >Rgister Free</label> </md-button>  <!-- ui-sref="home.registration --> 
+				</div>
+	
+				
+			</div>
+	
+			<div class="col-sm-3">
+				<div class="loginButton">
+					<md-button class="md-raised" style="height: 43px;width: 100%;" 
+					 ng-click="showTabDialog($event);"	><span style="">Login</span></md-button> <!--data-toggle="modal" data-target="#newSite" -->
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="couple-pic" alt="">
+	
+				<div class="row finder-form-transparent">
+					<div class="row search-section" >
+			
+						<div class="col-sm-3" >
+							<md-select placeholder="Looking For {{user.name}}" ng-model="search.ageFrom" md-on-open="loadUsers()" style="width:90%">
+								<md-option ng-value="user" ng-repeat="user in users">{{user.name}}</md-option>
+							</md-select>
+			
+						</div>
+						<div class="col-sm-2">
+							<md-select placeholder="Age" ng-model="search.ageFrom" md-on-open="loadUsers()" >
+								<md-option ng-value="user" ng-repeat="user in age">{{user.name}}</md-option>
+							</md-select>
+			
+						</div>
+						<div class="col-sm-2">
+							<md-select placeholder="to" ng-model="search.ageTo" md-on-open="loadUsers()" >
+								<md-option ng-value="user" ng-repeat="user in age1">{{user.name}}</md-option>
+							</md-select>
+			
+						</div>
+						<div class="col-sm-3">
+							<md-select placeholder="Religion" ng-model="search.religion" md-on-open="loadUsers()"  style="width:90%">
+								<md-option ng-value="user" ng-repeat="user in religion">{{user.name}}</md-option>
+							</md-select>
+			
+						</div>
+						<!-- <div class="col-sm-3">
+							<md-select placeholder="Caste" ng-model="search.cast" md-on-open="loadUsers()" style="min-width: 62%;">
+								<md-option ng-value="user" ng-repeat="user in cast">{{user.name}}</md-option>
+							</md-select>
+			
+						</div> -->
+						
+						 <div class="col-sm-2 "><md-button class="md-raised cd-button" data-toggle="modal" data-target="#newSite" style="color:white;  float: right;    height: 29px; 
+								margin-top: 18px;
+								
+			  background-color: var(--main-primary-color);"><label class=" label-font">Search</label> </md-button> </div> 
+						 <!-- <div class="col-sm-1 row-last-element ">
+			
+							<img src="images/search-bar-girl.png" alt="matrimony"
+								style="height: 56px;border-radius: 29px;    margin-top: 10px;" class="img-responsive">
+							<span style="padding:12px;"> Find your perfect partner out of more than 2 lakh verified profiles</span>
+			
+			
+						</div> 
+			 -->
+					</div>
+				</div>
+	
+			</div>
+		</div>
+		<!-- <div class="row search">
+			<div class="row" style="display: contents">
+				<img src="images/search-bar-icon.jpg" alt="matrimony" style="   height: 95px;    " class="img-responsive">
+				<img src="images/search-bar-boy.png" alt="matrimony" style="    height: 56px;padding-left: 27px;    margin-top: 10px;
+						" class="img-responsive">
+				<div class="col-sm-1" style="     display: flex;   padding: 29px;">
+					<md-radio-group ng-model="search.gender">
+	
+						<md-radio-button value="Apple" class="md-primary"></md-radio-button>
+								  
+					  </md-radio-group>
+					<span Style="    padding-left: 0px;">Groom</span>
+				</div>
+				<a href="#"><img src="images/search-bar-girl.png" alt="matrimony"
+						style="height: 56px;border-radius: 29px;    margin-top: 10px;" class="img-responsive"></a>
+				<div class="col-sm-1" style="     display: flex;   padding: 29px;">
+					<md-radio-group ng-model="search.gender">
+	
+						<md-radio-button value="Apple1" class="md-primary"></md-radio-button>
+								  
+					  </md-radio-group><span Style="    padding-left: 0px;">
+						Bride</span>
+				</div>
+	
+				< <div class="col-sm-1">
+				<md-select placeholder="Looking for" ng-model="user" md-on-open="loadUsers()" style="min-width: 62%;">
+					<md-option ng-value="user" ng-repeat="user in users">{{user.name}}</md-option>
+				</md-select>
+	
+			</div> 
+				<div class="col-sm-1">
+					<md-select placeholder="Age" ng-model="search.ageFrom" md-on-open="loadUsers()" style="min-width: 62%;">
+						<md-option ng-value="user" ng-repeat="user in age">{{user.name}}</md-option>
+					</md-select>
+	
+				</div>
+				<div class="col-sm-1">
+					<md-select placeholder="to" ng-model="search.ageTo" md-on-open="loadUsers()" style="min-width: 62%;">
+						<md-option ng-value="user" ng-repeat="user in age1">{{user.name}}</md-option>
+					</md-select>
+	
+				</div>
+				<div class="col-sm-2">
+					<md-select placeholder="Religion" ng-model="search.religion" md-on-open="loadUsers()" style="min-width: 62%;">
+						<md-option ng-value="user" ng-repeat="user in religion">{{user.name}}</md-option>
+					</md-select>
+	
+				</div>
+				<div class="col-sm-2">
+					<md-select placeholder="Caste" ng-model="search.cast" md-on-open="loadUsers()" style="min-width: 62%;">
+						<md-option ng-value="user" ng-repeat="user in cast">{{user.name}}</md-option>
+					</md-select>
+	
+				</div>
+				
+				 <div class="col-sm-1 "><md-button class="md-raised cd-button" data-toggle="modal" data-target="#newSite" style="color:white;  float: right;    height: 29px; 
+						margin-top: 18px;
+						
+	  background-color: var(--main-primary-color);"><label class=" label-font">Search</label> </md-button> </div> 
+				 <div class="col-sm-1 row-last-element ">
+	
+					<img src="images/search-bar-girl.png" alt="matrimony"
+						style="height: 56px;border-radius: 29px;    margin-top: 10px;" class="img-responsive">
+					<span style="padding:12px;"> Find your perfect partner out of more than 2 lakh verified profiles</span>
+	
+	
+				</div> 
+	
+			</div>
+		</div> -->
+	
+	
+		<div class="row">
+			<div class="col-sm-6">
+				<p style="    margin: 10px;">
+					About Us1
+					Matrimonial sites are popular in India and among Indians settled overseas, as an
+					alternative to the traditional marriage broker.[3] According to the Associated Chambers of Commerce and
+					Industry in India, the online matrimony business is expected to be a $250 Million business by 2017.[4]
+					According to The New York Times, there are over 1500 matrimony websites in India.[5]
+					Matrimonial sites register users, after which they are able to upload their profile onto a searchable
+					database maintained by the website. Those users looking to find suitors search the database with
+					customised searches that typically include nationality, age, gender, availability of photograph and
+					often religion, geographic location and caste (mainly for websites based in India).
+					Mission
+					Understand the needs and concerns of singles all over the world through tireless research and analysis
+					Provide a pleasant, satisfying, and superior matchmaking experience to our customers while zealously
+					protecting their privacy and security
+					Give our customers complete control through easy to use interfaces and features that can help them
+					identify, filter and contact potential partners
+					Values
+					Our vision is a world where the search for a life-partner is as fulfilling as the journey with a
+					soul-mate.
+				</p>
+	
+	
+			</div>
+			<div class="col-sm-6">
+				<img src={{homeSideImageFirst}}
+					alt="matrimony" style="    margin: 10px;" class="img-responsive">
+	
+			</div>
+		</div>
+	
+		<div class="row search2" style="color: var(--main-primary-color);    min-height: 78px;padding: 14px;">
+			<div class="row" style="display: contents">
+				<div class="col-sm-4"><span style="    font-size: xx-large;">Why Mymatrimony?</span></div>
+				<div class="col-sm-4" style="display: flex;">
+	
+					<img src="images/home-icon1.png"
+						alt="matrimony" style="    width: 52px;
+							height: 50px;" class="img-responsive">
+					<span style="     padding: 15px;   ">2 Lakh plus profiles</span>
+					<img src="images/home-icon2.png"
+						alt="matrimony" style="    width: 52px;
+		height: 50px;" class="img-responsive">
+					<span style="     padding: 15px;   ">4 point verification</span>
+	
+				</div>
+				<div class="col-sm-4" style="display: flex;">
+	
+					<img src="images/home-icon3.png"
+						alt="matrimony" style="    width: 52px;
+							height: 50px;" class="img-responsive">
+					<span style="       padding: 15px; ">100% privacy</span>
+					<img src="images/home-icon4.png"
+						alt="matrimony" style="    width: 52px;
+		height: 50px;" class="img-responsive">
+					<span style="      padding: 15px;  ">Personal 121 services</span>
+				</div>
+	
+	
+	
+			</div>
+		</div>
+	
+		<div class="row">
+			<div class="col-sm-6">
+				<img src={{homeSideImageSecond}}
+					alt="matrimony" style="    margin: 10px;" class="img-responsive">
+	
+			</div>
+			<div class="col-sm-6">
+				<p style="    margin: 10px;">
+					About Us
+					Matrimonial sites are popular in India and among Indians settled overseas, as an
+					alternative to the traditional marriage broker.[3] According to the Associated Chambers of Commerce and
+					Industry in India, the online matrimony business is expected to be a $250 Million business by 2017.[4]
+					According to The New York Times, there are over 1500 matrimony websites in India.[5]
+					Matrimonial sites register users, after which they are able to upload their profile onto a searchable
+					database maintained by the website. Those users looking to find suitors search the database with
+					customised searches that typically include nationality, age, gender, availability of photograph and
+					often religion, geographic location and caste (mainly for websites based in India).
+					Mission
+					Understand the needs and concerns of singles all over the world through tireless research and analysis
+					Provide a pleasant, satisfying, and superior matchmaking experience to our customers while zealously
+					protecting their privacy and security
+					Give our customers complete control through easy to use interfaces and features that can help them
+					identify, filter and contact potential partners
+					Values
+					Our vision is a world where the search for a life-partner is as fulfilling as the journey with a
+					soul-mate.
+				</p>
+	
+	
+			</div>
+	
+	
+		</div>
+		
+	
+	
+	
+	
+	</form>
+	<md-button class="md-primary md-raised" ng-click="showTabDialog($event)" >
+		Tab Dialog
+	  </md-button>
+	</div>
+	
+	
+	<div id="newSite" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-lm">
+	
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header header-color">
+	
+					<h4 class="modal-title" style="text-align: center;">Login</h4>
+				</div>
+				<div class="modal-body">
+	
+					<div class="row">
+						<div class="col-sm-6">
+							<md-input-container class="md-block">
+								<label>Client Name</label>
+								<input required name="clientName" ng-model="project.clientName">
+								<div ng-messages="projectForm.clientName.$error">
+									<div ng-message="required">This is required.</div>
+								</div>
+							</md-input-container>
+							<md-input-container class="md-block">
+								<label>Client Email</label>
+								<input required type="email" name="clientEmail" ng-model="project.clientEmail"
+									minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+	
+								<div ng-messages="projectForm.clientEmail.$error" role="alert">
+									<div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+										Your email must be between 10 and 100 characters long and look like an e-mail
+										address.
+									</div>
+								</div>
+							</md-input-container>
+	
+							<div class="row">
+								<div class="col-sm-12">
+	
+									<button type="button" class="btn btn-primary custom-button-cancel "
+										data-dismiss="modal">Cancel</button>
+									<button type="button" ng-click="" class="btn btn-primary custom-button">Login</button>
+								</div>
+							</div>
+	
+	
+						</div>
+						<div class="col-sm-6" style=" height: 200px;">
+							<div class="second-coloum">
+									<div class="col-sm-12 sighnup-buttons ">
+										
+											<img src="https://image.flaticon.com/icons/svg/145/145802.svg"
+											alt="matrimony" style=" padding: 2px;      height: inherit;" class="img-responsive"><span class="sighnup-span">Facebook</span>
+									</div>
+									
+									
+									
+									<div class="col-sm-12 sighnup-buttons">											<img src="https://image.flaticon.com/icons/svg/281/281764.svg"
+										alt="matrimony" style="    padding: 2px;   height: inherit;" class="img-responsive"><span class="sighnup-span">Google</span>
+	</div>
+									
+										
+										
+										
+										 
+							</div>
+						</div>
+	
+					</div>
+	
+				</div>
+			</div>
+		</div>

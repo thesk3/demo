@@ -1,0 +1,168 @@
+<style>
+        .row {
+            margin-right: 0px;
+            margin-left: 0px;
+        }
+    
+    
+        md-checkbox {
+            box-sizing: border-box;
+            display: inline-block;
+            margin-bottom: 16px;
+            white-space: nowrap;
+            cursor: pointer;
+            outline: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            position: relative;
+            min-width: 20px;
+            min-height: 20px;
+            margin-left: 0;
+            margin-right: 2px;
+            margin-top: 11px;
+        }
+    </style>
+    <div class="container-fluid">
+        <div class="panel" style="min-height: 427px;border-radius: 11px;    padding: 14px;">
+            <div class="row" style="">
+                <div class="col-sm-3 imgUp">
+                    <div class="imagePreview circlrImg" style="background-image: url(https://images.unsplash.com/photo-1519744926925-1ace725a2d5a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=333&q=80);"></div>
+                    <label class="btn  btn-primary2">
+                        Upload<input type="file" class="uploadFile img" value="Upload Photo"
+                            style="width: 0px;height: 0px;overflow: hidden;">
+                    </label>
+                    <div class="CheckboxCustom">
+                        <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+    
+                        </md-checkbox>
+                        <md-checkbox ng-model="data.cb2" aria-label="Checkbox 1">
+    
+                        </md-checkbox>
+                        <md-checkbox ng-model="data.cb3" aria-label="Checkbox 1">
+    
+                        </md-checkbox>
+                        <md-checkbox ng-model="data.cb4" aria-label="Checkbox 1">
+    
+                        </md-checkbox>
+                        <md-checkbox ng-model="data.cb5" aria-label="Checkbox 1">
+    
+                        </md-checkbox>
+                    </div>
+                    <div><label>Profile Verified 3 out of 5{{ data.cb1 }}</label>
+                    </div>
+                    <div><label>Profile Created by Self</label>
+                    </div>
+    
+                </div>
+    
+    
+                <!--    --------------------          2nd block    ----------------------      -->
+                <div class="col-sm-3 block-boredr">
+                    <div id="name">
+                        <label style="color: blue;    font-weight: bold;">Akshy kumar</label><label style="    padding-left: 20px;
+            font-size: 10px;
+            ">(Age-25)</label>
+                    </div>
+    
+                    <div id="Positiuon">
+                        <label class="story-msg ">Software Devloper</label>
+                    </div>
+                    <div class="">
+                        <div class="user-info">
+                            <i class="fas fa-map-marker-alt my-profile-font"></i> <label class="my-profile-label"> Lives In
+                                Pune, Maharashtra</label>
+                        </div>
+                        <div class="user-info">
+                            <i class="fas fa-home my-profile-font" aria-hidden="true"></i> <label
+                                class="my-profile-label">From Latur, Maharashtra
+    
+                            </label>
+                        </div>
+                        <div class="user-info">
+                            <i class="far fa-heart my-profile-font"></i><label class="my-profile-label">Never Married
+    
+                            </label>
+                        </div>
+                        <div class="user-info">
+                            <i class="far fa-envelope my-profile-font"></i> <label
+                                class="my-profile-label">admin@gmail.com</label>
+                        </div>
+                        <div class="user-info">
+                            <i class="fas fa-mobile-alt my-profile-font"></i> <label
+                                class="my-profile-label">1234567890</label>
+                        </div>
+                    </div>
+    
+    
+                </div>
+    
+                <!--    --------------------          3rd block    ----------------------      -->
+    
+                <div class="col-sm-3 block-boredr" style="padding-top: 72px;">
+                    <div class="row responssive-block">
+                        <div class="col-sm-6 user-info"><label class="my-profile-label">DOB</label> </div>
+                        <div class="col-sm-6 user-info"> <label class="my-profile-label">14 Apr 1996</label> </div>
+                    </div>
+                    <div class="row responssive-block">
+    
+                        <div class="col-sm-6 user-info"><label class="my-profile-label">Height</label> </div>
+                        <div class="col-sm-6 user-info"> <label class="my-profile-label">5' 7"</label> </div>
+                    </div>
+                    <div class="row responssive-block">
+    
+                        <div class="col-sm-6 user-info"><label class="my-profile-label">Skin Tone</label> </div>
+                        <div class="col-sm-6 user-info"> <label class="my-profile-label">Wheatis </label> </div>
+                    </div>
+                    <div class="row responssive-block">
+    
+                        <div class="col-sm-6 user-info"><label class="my-profile-label">Body Type</label> </div>
+                        <div class="col-sm-6 user-info"> <label class="my-profile-label">Average</label> </div>
+    
+                    </div>
+                    <div class="row responssive-block">
+    
+                        <div class="col-sm-6 user-info"><label class="my-profile-label">Weight</label> </div>
+                        <div class="col-sm-6 user-info"> <label class="my-profile-label">60 Kg</label> </div>
+                    </div>
+                </div>
+    
+                <!--    --------------------          4th block    ----------------------      -->
+    
+                <div class="col-sm-3 block-boredr" style="       padding-top: 72px;">
+                    <div class="row responssive-block">
+                        <div class="col-sm-6 user-info"><label class="my-profile-label">Religion</label> </div>
+                        <div class="col-sm-6 user-info"> <label class="my-profile-label">14 Apr 1996</label> </div>
+                    </div>
+    
+                    <div class="row responssive-block">
+                        <div class="col-sm-6 user-info"><label class="my-profile-label">Caste</label> </div>
+                        <div class="col-sm-6 user-info"> <label class="my-profile-label">5' 7"</label> </div>
+                    </div>
+                    <div class="row responssive-block">
+                        <div class="col-sm-6 user-info"><label class="my-profile-label">Community</label> </div>
+                        <div class="col-sm-6 user-info"> <label class="my-profile-label">Wheatis </label> </div>
+                    </div>
+                    <div class="row responssive-block">
+                        <div class="col-sm-6 user-info"><label class="my-profile-label"> Mother Tongue</label> </div>
+                        <div class="col-sm-6 user-info"> <label class="my-profile-label">Average</label> </div>
+                    </div>
+    
+                </div>
+    
+            </div>
+            <div class="row color-bar">
+                <center style="color: white;padding: 18px;
+    font-size: 14px;"><label></label></center>
+            </div>
+    
+            <div class="row ">
+                    <center style="color: white;padding: 18px;
+        font-size: 14px;">  <button type="button" style="width:16%;" class="btn btn-primary custom-button-cancel "
+                                ng-click="" ui-sref="home.partnerProfile" data-dismiss="modal">Back</button></center>
+                </div>
+           
+        </div>
+    
+    </div>

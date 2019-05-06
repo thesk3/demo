@@ -1,0 +1,96 @@
+<md-dialog aria-label="Login">
+
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header header-color">
+  
+        <h4 class="modal-title" style="text-align: center;">Register</h4>
+      </div>
+      <div class="modal-body">
+          <form name="registerForm" ng-controller="loginCtr">
+          <div class="row"><label style="color: red;    margin-left: 24px;">{{logerrormsg}}</label></div>
+  
+          <div class="row">
+            <div class="col-sm-1">
+            </div>
+            
+            <div class="col-sm-10">
+                <md-input-container class="md-block">
+                    <label>Email</label>
+                    <input required type="email" name="username" ng-model="registration.username" minlength="10"
+                        maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+
+                    <div ng-messages="registrationForm.username.$error" role="alert">
+                        <div  ng-message="['required', 'minlength', 'maxlength', 'pattern']">
+                            Your email must valid.
+                        </div>
+                    </div>
+                </md-input-container>
+
+                
+
+                <md-input-container class="md-block">
+                        <label> Password</label>
+                        <input required type="password"  name="password" ng-model="registration.password">
+                        <div ng-messages="registrationForm.password.$error">
+                            <div ng-message="required">This is required.</div>
+                           
+                        </div>
+                    </md-input-container>
+
+                    <md-input-container class="md-block">
+                            <label>Confirm Password</label>
+                            <input required type="password" equal-with="registration.password" name="confirmPassword" ng-model="registration.confirmPassword">
+                            <div ng-messages="registrationForm.confirmPassword.$error" >
+                                    <div  ng-message="required">This is required.</div>
+                                <div  ng-message="equalWith">Match password</div>
+                               
+                               
+                            </div>
+                            
+                        </md-input-container>
+
+
+                <div class="row">
+                    <div class="col-sm-12">
+
+                            <md-checkbox required
+                            ng-model="data.cb2"
+                            aria-label="Checkbox 2"
+                            ng-true-value="'yup'"
+                            ng-false-value="'nope'"
+                            class="md-warn md-align-top-left" flex> <span class="ipsum" style="    font-size: 14px;
+                            font-family: sans-serif;">
+                            I have read & agree to the T&C and Privacy Policy
+                          {{ data.cb2 }}</span>
+                        </md-checkbox>
+                       
+                    </div>
+                    <button type="button" ng-click="register()" style="    width: 100%;"
+                    class="btn btn-primary custom-button" ng-disabled="registrationForm.$invalid">SUBMIT</button>
+             
+                </div>
+
+                
+            </div>
+            <div class="col-sm-1">
+            </div>
+
+        </div>
+      </form>
+      <div class="row" style="margin-top: 12px;">
+            <!-- <div class="col-sm-12" style="text-align: -webkit-center;   ">
+
+                   <label class="ipsum" style="font-size: 13px;
+                   font-weight: 600;
+                   text-align: center;
+                   display: block;"  ng-click="openLogin(")">
+                   Already a member ? <span    style="color: #00aeaf;"> 1 Login</span></label>
+          
+               
+            </div>
+           -->
+        </div>
+    </div>
+        </md-dialog>

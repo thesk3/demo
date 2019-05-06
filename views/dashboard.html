@@ -1,0 +1,152 @@
+<link href="css/dashboardmobile.css" rel="stylesheet">
+<style>
+    .row {
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+
+
+    md-checkbox {
+        box-sizing: border-box;
+        display: inline-block;
+        margin-bottom: 16px;
+        white-space: nowrap;
+        cursor: pointer;
+        outline: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        position: relative;
+        min-width: 20px;
+        min-height: 20px;
+        margin-left: 0;
+        margin-right: 2px;
+        margin-top: 11px;
+    }
+</style>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-9 imgUp panel">
+                <div class="imagePreview circlrImg" style="width: 99%;background-image: url({{imgProfilePath}});">
+                </div>
+                <label class="btn  btn-primary2" style="margin-left: 60px;">
+                    Upload<input type="file" class="uploadFile img" value="Upload Photo"
+                        style="width: 0px;height: 0px;overflow: hidden;">
+                </label>
+                <div class="CheckboxCustom checkbox-custome" style="    margin-left: 13px;">
+                    <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+
+                    </md-checkbox>
+                    <md-checkbox ng-model="data.cb2" aria-label="Checkbox 1">
+
+                    </md-checkbox>
+                    <md-checkbox ng-model="data.cb3" aria-label="Checkbox 1">
+
+                    </md-checkbox>
+                    <md-checkbox ng-model="data.cb4" aria-label="Checkbox 1">
+
+                    </md-checkbox>
+                    <md-checkbox ng-model="data.cb5" aria-label="Checkbox 1">
+
+                    </md-checkbox>
+                </div>
+                <div><label style="    margin-left: 23px;">Profile Verified 3 out of 5{{ data.cb1 }}</label>
+                </div>
+                <!-- <div><label style="    margin-left: 23px;">Profile Created by Self</label> -->
+            </div>
+        </div>
+        <div class="col-sm-1"></div>
+        <div class="col-sm-2 panel custom-panel-dashboard card-first">
+            <div class="card-header"> <i class="fas fa-eye card-icon"></i> <label class="card-lable">My Profile
+                    View</label></div>
+            <div>
+                <label class="card-body">112</label>
+            </div>
+
+        </div>
+        <div class="col-sm-1"></div>
+        <div class="col-sm-2 panel custom-panel-dashboard card-second">
+            <div class="card-header"> <i class="far fa-bookmark"></i> <label class="card-lable">Shortlisted Profiles
+
+                </label></div>
+            <div>
+                <label class="card-body">34</label>
+            </div>
+        </div>
+        <div class="col-sm-1"></div>
+        <div class="col-sm-2 panel custom-panel-dashboard card-third">
+            <div class="card-header"> <i class="fas fa-binoculars"></i> <label class="card-lable">Profiles Viewed
+
+                </label></div>
+            <div>
+                <label class="card-body">56</label>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-sm-3 you-may-like-div">
+        <div class="you-may-like-header"><label style="font-size: 17px;">View Similar Profiles</label></div>
+
+        <div class="you-may-like">
+            <ul>
+                <li ng-repeat="profile in similarProfiles " ng-click="goToProfileView(profile.id)">
+                    <div class="col-md-12 ">
+                        <span class="pull-left you-may-like-pic ">
+                            <img src="{{profile.profilePicturePath}}" style="height: 80px;    border-radius: 49px;
+                              width: 80px;">
+                        </span>
+                        <div class="media-body" style="">
+                            <h5>{{profile.name}}</h5>
+                            <p>{{profile.age}} yrs, {{profile.height}} cm,
+                                {{profile.employmentType}} ,{{profile.country}} </p>
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-sm-1">
+
+    </div>
+
+
+    <div class="col-sm-8 panel" style="min-height: 67px;">
+        <label>Membership Details</label>
+        <div class="row card-color-label" style="    padding: 7px;">
+            <div class="col-sm-2"><label style="font-weight: 700;">Registered On</label></div>
+            <div class="col-sm-6"><label>12 Apr 2019</label></div>
+        </div>
+        <div class="row card-color-label" style="padding: 7px;">
+                <div class="col-sm-2"><label style="font-weight: 700;">Active Till</label></div>
+                <div class="col-sm-6"><label>11 Apr 2019</label></div>
+            </div>
+        <div class="row card-color-label" style=" padding: 7px;">
+                <div class="col-sm-2"><label style="font-weight: 700;">Membership Plan</label></div>
+                <div class="col-sm-6"><label>Regular</label></div>
+        </div>
+    </div>
+    <div class="col-sm-1">
+
+        </div>
+    <div class="col-sm-8 panel" style="min-height: 67px;">
+            
+            <div class="row">
+                <div class="col-sm-3 dashboard-webinfo" ><img src="images/logo.jpg" style="    margin-top: 25px;height: 91px;"
+				style="width: 100%;"></div>
+                <div class="col-sm-6"><label>It's My Matrimony, also helps you with our personal offline assistance with regards to finding the
+                     best match for you. Apart from the online profiles we are in personal touch with thousands of to
+                      be brides and grooms. Our match making experts will shortlist the profiles basis your bio data
+                       and your preferences. We do the initial screening of the bio data and partner preference of
+                        both the parties. We also initiate the talks on your behalf and communicate it to both the
+                         families.  </label></div>
+            </div>
+            
+        </div>
+</div>
+</div>

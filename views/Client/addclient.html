@@ -1,0 +1,249 @@
+
+<style>
+md-tooltip.md-show {
+	color: white !important;
+	-webkit-transition: all .4s cubic-bezier(.25, .8, .25, 1);
+	transition: all .4s cubic-bezier(.25, .8, .25, 1);
+	pointer-events: auto;
+}
+
+.md-show {
+	visibility: visible;
+	color: white !important;
+}
+</style>
+<div class="container">
+	<form name="newClient" novalidate autocomplete="off" ng-init="init()">
+		<br>
+		<div class="panel panel-deva">
+			<div class="panel-heading" style="font-size: 15px;">Add Client</div>
+			<div class="panel-body">
+
+
+
+				<div class="col-sm-6">
+					<div class="col-sm-4">
+						<label for="inputsm" class="labelInput">Client Name<span
+							class="req">*</span></label>
+					</div>
+					
+					<div class="col-sm-8">
+						<div class="form-group">
+							<input type="text" class="form-control input-sm" id="clientName" pattern="([A-Za-z])\D+"  ng-pattern-restrict
+								name="clientName" ng-model="clientInfo.clientName" maxlength="41" ng-maxlength="40" autofocus="autofocus" required>
+								
+						<span
+							ng-show="newClient.clientName.$dirty && newClient.clientName.$invalid">
+							<span ng-show="newClient.clientName.$error.required"
+							class="error">Please Enter Name</span>
+							<span ng-show="newClient.clientName.$error.maxlength"
+							class="error">Enter Maximum 40 char</span>
+							<span ng-show="newClient.clientName.$error.pattern-restrict"
+							class="error">Enter only character</span>
+						</span>
+						</div>
+						
+					</div>
+					<div class="col-sm-4">
+						<label for="inputsm" class="labelInput">Contact Person<span
+							class="req">*</span></label>
+					</div>
+					<div class="col-sm-8">
+						<div class="form-group">
+							<input type="text" class="form-control input-sm" id="clientContactPerson" maxlength="41" ng-maxlength="40"
+								name="contactPerson" pattern="([A-Za-z])\D+" ng-pattern-restrict
+								ng-model="clientInfo.contactPerson" required>
+								<span
+							ng-show="newClient.contactPerson.$dirty && newClient.contactPerson.$invalid">
+							<span ng-show="newClient.contactPerson.$error.required"
+							class="error">Please Enter Contact Person Name</span>
+							<span ng-show="newClient.contactPerson.$error.maxlength"
+							class="error">Enter Maximum 40 char</span>
+							<span ng-show="newClient.contactPerson.$error.pattern-restrict"
+							class="error">Enter only character</span>
+						</span>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<label for="inputsm" class="labelInput">Email ID<span
+							class="req">*</span></label>
+					</div>
+					<div class="col-sm-8">
+						<div class="form-group">
+							<input type="email" class="form-control input-sm" id="clientEmailID"
+								name="emailID" ng-model="clientInfo.emailID" maxlength="255" ng-maxlength="254"
+								required>
+								<span
+							ng-show="newClient.emailID.$dirty && newClient.emailID.$invalid">
+							<span ng-show="newClient.emailID.$error.required"
+							class="error">Please Enter Email ID</span>
+								<span ng-show="newClient.emailID.$error.email"
+							class="error">Please Enter Email ID</span>
+							<span ng-show="newClient.emailID.$error.maxlength"
+							class="error">Enter Maximum 254 char</span>
+						</span>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<label for="inputsm" class="labelInput">Reg Office Address<span
+							class="req">*</span></label>
+					</div>
+					<div class="col-sm-8">
+						<div class="form-group">
+							<textarea class="form-control input-sm" rows="4" id="clientOfficeAddress"
+								name="clientOfficeAddress" maxlength="161" ng-maxlength="160"
+								ng-model="clientInfo.clientOfficeAddress" required></textarea>
+								<span
+							ng-show="newClient.clientOfficeAddress.$dirty && newClient.clientOfficeAddress.$invalid">
+							<span ng-show="newClient.clientOfficeAddress.$error.required"
+							class="error">Please Enter Reg Office Address</span>
+							<span ng-show="newClient.clientOfficeAddress.$error.maxlength"
+							class="error">Enter Maximum 160 char</span>
+						</span>
+						</div>
+					</div>
+
+					<div class="col-sm-4">
+						<label for="inputsm" class="labelInput">City<span
+							class="req">*</span></label>
+					</div>
+					<div class="col-sm-8">
+						<div class="form-group">
+							<input type="text" class="form-control input-sm" id="clientCity"
+								name="clientCity" ng-model="clientInfo.clientCity" maxlength="161" ng-maxlength="160" required>
+								<span
+							ng-show="newClient.city.$dirty && newClient.city.$invalid">
+							<span ng-show="newClient.city.$error.required"
+							class="error">Please Enter City</span>
+									<span ng-show="newClient.clientCity.$error.maxlength"
+							class="error">Enter Maximum 160 char</span>
+						</span>
+						</div>
+						
+					</div>
+					<div class="col-sm-4">
+						<label for="inputsm" class="labelInput">GST</label>
+					</div>
+					<div class="col-sm-8">
+						<div class="form-group">
+							<input type="text" class="form-control input-sm" id="clientGST" maxlength="16" ng-maxlength="15"
+								name="clientGST" ng-model="clientInfo.clientGST " ng-change="clientInfo.clientGST  = clientInfo.clientGST .toUpperCase()">
+								<span
+							ng-show="newClient.clientGST.$dirty && newClient.clientGST.$invalid">
+							
+							<span ng-show="newClient.clientGST.$error.maxlength"
+							class="error">Enter Maximum 15 </span>
+							
+						</span>
+						</div>
+					</div>
+
+				</div>
+				<div class="col-sm-6">
+
+					<div class="col-sm-4">
+						<label for="inputsm" class="labelInput">Primary Mobile<span
+							class="req">*</span></label>
+					</div>
+					<div class="col-sm-8">
+						<div class="form-group">
+							<input type="number" class="form-control input-sm" id="primaryMobileNo" ng-maxlength="10" ng-minlength="10" 
+								name="primaryMobileNo" ng-model="clientInfo.primaryMobileNo"
+								required>
+							    <span ng-show="newClient.primaryMobileNo.$dirty && newClient.primaryMobileNo.$invalid">
+                                    <span ng-show="newClient.primaryMobileNo.$error.required" class="error">Please Enter Mobile Number</span>
+                                    <span ng-show="newClient.primaryMobileNo.$error.minlength" class="error">Mobile Number Should Be 10 Digit</span>
+                                    <span ng-show="newClient.primaryMobileNo.$error.maxlength" class="error">Mobile Number Should Be 10 Digit</span> 
+                              </span>
+						</div>
+						
+					</div>
+					<div class="col-sm-4">
+						<label for="inputsm" class="labelInput">Secondary Mobile</label>
+					</div>
+					<div class="col-sm-8">
+						<div class="form-group">
+							<input type="number" class="form-control input-sm" id="secondaryMobileNo" ng-maxlength="10" ng-minlength="10"
+								name="secondaryMobileNo" ng-model="clientInfo.secondaryMobileNo">
+								  <span ng-show="newClient.secondaryMobileNo.$dirty && newClient.secondaryMobileNo.$invalid">
+                                    <span ng-show="newClient.secondaryMobileNo.$error.required" class="error">Please Enter Mobile Number</span>
+                                    <span ng-show="newClient.secondaryMobileNo.$error.minlength" class="error">Mobile Number Should Be 10 Digit</span>
+                                    <span ng-show="newClient.secondaryMobileNo.$error.maxlength" class="error">Mobile Number Should Be 10 Digit</span> 
+                              </span>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<label for="inputsm" class="labelInput">Landline Number</label>
+					</div>
+					<div class="col-sm-8">
+						<div class="form-group">
+							<input type="number" class="form-control input-sm" id="landlineNO" ng-maxlength="11" ng-minlength="10"
+								name="landlineNO" ng-model="clientInfo.landlineNO">
+							 <span ng-show="newClient.landlineNO.$dirty && newClient.landlineNO.$invalid">
+                                    <span ng-show="newClient.landlineNO.$error.required" class="error">Please Enter Landline Number</span>
+                                    <span ng-show="newClient.landlineNO.$error.minlength" class="error">Landline Number Should Be 10 Digit</span>
+                                    <span ng-show="newClient.landlineNO.$error.maxlength" class="error">Landline Number Should Be 10 Digit</span> 
+                              </span>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<label for="inputsm" class="labelInput">Site Address</label>
+					</div>
+					<div class="col-sm-8">
+						<div class="form-group">
+							<textarea  class="form-control input-sm"  rows="4"
+								id="siteAddress" name="siteAddress" maxlength="161" ng-maxlength="160"
+								ng-model="clientInfo.siteAddress"></textarea>
+							 <span ng-show="newClient.siteAddress.$dirty && newClient.siteAddress.$invalid">
+                                    <span ng-show="newClient.siteAddress.$error.maxlength" class="error">Site Address Should Be Maximum 160 Digit</span> 
+                              </span>
+						</div>
+					</div>
+
+					<div class="col-sm-4">
+						<label for="inputsm" class="labelInput">City</label>
+					</div>
+					<div class="col-sm-8">
+						<div class="form-group">
+							<input type="text" class="form-control input-sm" id="siteCity" ng-maxlength="160" maxlength="161"
+								name="siteCity" ng-model="clientInfo.siteCity">
+						 <span ng-show="newClient.siteCity.$dirty && newClient.siteCity.$invalid">
+                                    <span ng-show="newClient.siteCity.$error.maxlength" class="error">Site Address Should Be Maximum 160 Digit</span> 
+                              </span>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="col-md-12">
+                            <div align="center" style="margin-bottom: 10px;">
+                                <button type="button" style="margin-top: 10px;" ui-sref="home.clientlist" class="btn btn-deva">Cancel</button>
+                             <button type="button"  style="margin-top: 10px;" ng-disabled="newClient.$invalid" ng-click="addNewEmp()" class="btn btn-deva" >Save</button> 
+                            </div></div>
+
+			</div>
+		</div>
+	</form>
+</div>
+<!--pop up for client added  -->
+<div id="addClient" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header header-color">
+      
+        <h4 class="modal-title" style="text-align: center;">Client added</h4>
+      </div>
+      <div class="modal-body">
+     <center>Client {{cid}} created successfully </center>
+      </div>
+      <div class="modal-footer">
+        <button type="button" ng-click="clientList()" class="btn btn-default popupbtn" data-dismiss="modal">Ok</button>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+

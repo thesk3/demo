@@ -1,0 +1,887 @@
+
+<style>
+md-tooltip.md-show {
+	color: white !important;
+	-webkit-transition: all .4s cubic-bezier(.25, .8, .25, 1);
+	transition: all .4s cubic-bezier(.25, .8, .25, 1);
+	pointer-events: auto;
+}
+
+.md-show {
+	visibility: visible;
+	color: white !important;
+}
+
+.border {
+	border: 1px solid;
+	border: 1px solid;
+	border-bottom: 1px solid;
+	height: 274px;
+	margin-bottom: 28px;
+}
+
+.bord {
+	border: 1px solid darkgrey;
+	padding: 10px;
+	margin: 8px;
+	width: 32%;
+}
+
+@media screen and (max-width: 600px) {
+	.bord {
+		border: 1px solid darkgrey;
+		padding: 10px;
+		margin: 8px;
+		width: 85%;
+	}
+}
+
+.wid {;
+	width: 36%;
+}
+
+@media screen and (max-width: 600px) {
+	.wid {
+		width: 64%;
+	}
+}
+</style>
+<div class="container">
+	<form name="scheduleVisit" novalidate autocomplete="off"
+		ng-init="visit=false;site=true;hideshow=false;" ng-hide="visit"
+		ng-init="init()">
+		<br>
+		<div class="panel panel-deva">
+			<div class="panel-heading" style="font-size: 15px;">Schedule
+				Visit Direct</div>
+			<div class="panel-body">
+
+
+
+				<div class="col-sm-6">
+					<div class="col-sm-4">
+						<label for="inputsm" class="labelInput">Client ID/Name<span
+							class="req">*</span></label>
+					</div>
+					<div class="col-sm-2">
+						<div class="form-group">
+							<input type="text" class="form-control input-sm" name="clientID"
+								ng-model="clientInfo.clientID" disabled>
+
+
+						</div>
+
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<input type="text" class="form-control input-sm" id="clientName"
+								ng-disabled="statusOfDisabeled=true" name="clientName"
+								ng-model="newVisit.clientName" maxlength="46" ng-maxlength="45"
+								required> <span
+								ng-show="scheduleVisit.clientName.$dirty &&scheduleVisit.clientName.$invalid">
+								<span ng-show="scheduleVisit.clientName.$error.required"
+								class="error">Please Enter Name</span> <span
+								ng-show="scheduleVisit.clientName.$error.maxlength"
+								class="error">Enter Maximum 45 char</span>
+							</span>
+						</div>
+
+					</div>
+					<div class="col-sm-4">
+						<label for="inputsm" class="labelInput">Contact Person<span
+							class="req">*</span></label>
+					</div>
+					<div class="col-sm-8">
+						<div class="form-group">
+							<input type="text" class="form-control input-sm"
+								ng-disabled="statusOfDisabeled" id="clientContactPerson"
+								name="clientContactPerson" ng-model="newVisit.contactPerson"
+								required> <span
+								ng-show="newVisit.contactPerson.$dirty && newVisit.contactPerson.$invalid">
+								<span ng-show="scheduleVisit.contactPerson.$error.required"
+								class="error">Please Enter Contact Person Name</span>
+							</span>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<label for="inputsm" class="labelInput">Primary Mobile<span
+							class="req">*</span></label>
+					</div>
+					<div class="col-sm-8">
+						<div class="form-group">
+							<input type="number" class="form-control input-sm"
+								ng-disabled="statusOfDisabeled" id="primaryMobileNo"
+								name="primaryMobileNo" ng-model="newVisit.primaryMobileNo"
+								required> <span
+								ng-show="scheduleVisit.primaryMobileNo.$dirty && scheduleVisit.primaryMobileNo.$invalid">
+								<span ng-show="scheduleVisit.primaryMobileNo.$error.required"
+								class="error">Please Enter Primary Mobile</span>
+							</span>
+						</div>
+
+					</div>
+
+					<div class="col-sm-4">
+						<label for="inputsm" class="labelInput">Reg Office Address<span
+							class="req">*</span></label>
+
+					</div>
+					<div class="col-sm-8">
+						<div class="form-group">
+							<textarea class="form-control input-sm" rows="4"
+								ng-disabled="statusOfDisabeled" id="clientOfficeAddress"
+								name="clientOfficeAddress"
+								ng-model="newVisit.clientOfficeAddress" required></textarea>
+							<span
+								ng-show="scheduleVisit.clientOfficeAddress.$dirty && scheduleVisit.clientOfficeAddress.$invalid">
+								<span
+								ng-show="scheduleVisit.clientOfficeAddress.$error.required"
+								class="error">Please Enter Reg Office Address</span>
+							</span>
+						</div>
+					</div>
+
+					<div class="col-sm-4">
+						<label for="inputsm" class="labelInput">City<span
+							class="req">*</span></label>
+					</div>
+					<div class="col-sm-8">
+						<div class="form-group">
+							<input type="text" class="form-control input-sm" id="clientCity"
+								ng-disabled="statusOfDisabeled" name="clientCity"
+								ng-model="newVisit.clientCity" required> <span
+								ng-show="scheduleVisit.city.$dirty && scheduleVisit.city.$invalid">
+								<span ng-show="scheduleVisit.city.$error.required" class="error">Please
+									Enter City</span>
+							</span>
+						</div>
+
+					</div>
+
+
+				</div>
+				<div class="col-sm-6">
+
+
+					<div class="col-sm-4">
+						<label for="inputsm" class="labelInput">Activity<span
+							class="req">*</span></label>
+					</div>
+					<div class="col-sm-8">
+						<div class="form-group">
+
+							<select class="form-control" name="activity"
+								ng-model="newVisit.activity" data-style="btn-primary" required>
+								<option value="">Please Select</option>
+								<option value="Survey">Survey</option>
+								<option value="Demarcation">Demarcation</option>
+								<option value="Project Discussion">Project Discussion</option>
+								<option value="Payment Recovery">Payment Recovery</option>
+							</select> <span
+								ng-show="scheduleVisit.activity.$dirty && newEmp.activity.$invalid">
+								<span ng-show="scheduleVisit.activity.$error.required"
+								class="error">Please Select Activity</span>
+							</span>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<label for="inputsm" class="labelInput">Date<span
+							class="req">*</span></label>
+					</div>
+					<div class="col-sm-5">
+						<div>
+							<div class="form-group">
+								<div class="input-group input-group-sm">
+									<input type="text" class="form-control getDate"
+										name="visitDate" ng-model="newVisit.visitDate" required>
+									<span class="input-group-addon"> <i
+										class="fa fa-calendar"></i>
+									</span>
+
+								</div>
+								<span
+									ng-show="scheduleVisit.visitDate.$dirty && scheduleVisit.visitDate.$invalid">
+									<span ng-show="scheduleVisit.visitDate.$error.required"
+									class="error">Please Enter Date</span>
+								</span>
+							</div>
+						</div>
+
+					</div>
+					<div class="col-sm-1">
+
+						<input type="checkbox" name="visitFullDate"
+							ng-model="newVisit.visitFullDate"
+							ng-click="newVisit.visitFullDate==true? newVisit.toTime=newVisit.fromTime='':'' ">
+					</div>
+					<div class="col-sm-2">
+
+						<label for="inputsm">Day Event</label>
+					</div>
+					<div class="col-sm-4">
+						<label for="inputsm" class="labelInput">Time</label>
+					</div>
+					<div class="col-sm-4">
+						<div class="form-group">
+							<select class="form-control" name="fromTime1"
+								ng-disabled='newVisit.visitFullDate'
+								ng-model="newVisit.fromTime" data-style="btn-primary"
+								ng-required="!newVisit.visitFullDate">
+								<option value="">Please Select</option>
+								<option value="05:00AM">05:00AM</option>
+								<option value="05:30AM">05:30AM</option>
+								<option value="06:00AM">06:00AM</option>
+								<option value="06:30AM">06:30AM</option>
+								<option value="07:00AM">07:00AM</option>
+								<option value="07:30AM">07:30AM</option>
+								<option value="08:00AM">08:00AM</option>
+								<option value="08:30AM">08:30AM</option>
+								<option value="09:00AM">09:00AM</option>
+								<option value="09:30AM">09:30AM</option>
+								<option value="10:00AM">10:00AM</option>
+								<option value="10:30AM">10:30AM</option>
+								<option value="11:00AM">11:00AM</option>
+								<option value="11:30AM">11:30AM</option>
+								<option value="12:00PM">12:00PM</option>
+								<option value="12:30PM">12:30PM</option>
+								<option value="01:00PM">01:00PM</option>
+								<option value="01:30PM">01:30PM</option>
+								<option value="02:00PM">02:00PM</option>
+								<option value="02:30PM">02:30PM</option>
+								<option value="03:00PM">03:00PM</option>
+								<option value="03:30PM">03:30PM</option>
+								<option value="04:00PM">04:00PM</option>
+								<option value="04:30PM">04:30PM</option>
+								<option value="05:00PM">05:00PM</option>
+								<option value="05:30PM">05:30PM</option>
+								<option value="06:00PM">06:00PM</option>
+								<option value="06:30PM">06:30PM</option>
+								<option value="07:00PM">07:00PM</option>
+								<option value="07:30PM">07:30PM</option>
+								<option value="08:00PM">08:00PM</option>
+								<option value="08:30PM">08:30PM</option>
+								<option value="09:00PM">09:00PM</option>
+								<option value="09:30PM">09:30PM</option>
+								<option value="10:00PM">10:00PM</option>
+							</select> <label for="inputsm" class="labelInput"
+								style="margin: -23px; font-size: 13px;">to</label>
+						</div>
+						<span
+							ng-show="scheduleVisit.fromTime.$dirty && scheduleVisit.fromTime.$invalid">
+							<span ng-show="scheduleVisit.fromTime.$error.required"
+							class="error">Please Enter Time</span>
+						</span>
+					</div>
+					<div class="col-sm-4">
+						<div class="form-group">
+							<select class="form-control" name="toTime1"
+								ng-disabled='newVisit.visitFullDate' ng-model="newVisit.toTime"
+								data-style="btn-primary" ng-required="!newVisit.visitFullDate">
+								<option value="">Please Select</option>
+								<option value="05:00AM">05:00AM</option>
+								<option value="05:30AM">05:30AM</option>
+								<option value="06:00AM">06:00AM</option>
+								<option value="06:30AM">06:30AM</option>
+								<option value="07:00AM">07:00AM</option>
+								<option value="07:30AM">07:30AM</option>
+								<option value="08:00AM">08:00AM</option>
+								<option value="08:30AM">08:30AM</option>
+								<option value="09:00AM">09:00AM</option>
+								<option value="09:30AM">09:30AM</option>
+								<option value="10:00AM">10:00AM</option>
+								<option value="10:30AM">10:30AM</option>
+								<option value="11:00AM">11:00AM</option>
+								<option value="11:30AM">11:30AM</option>
+								<option value="12:00PM">12:00PM</option>
+								<option value="12:30PM">12:30PM</option>
+								<option value="01:00PM">01:00PM</option>
+								<option value="01:30PM">01:30PM</option>
+								<option value="02:00PM">02:00PM</option>
+								<option value="02:30PM">02:30PM</option>
+								<option value="03:00PM">03:00PM</option>
+								<option value="03:30PM">03:30PM</option>
+								<option value="04:00PM">04:00PM</option>
+								<option value="04:30PM">04:30PM</option>
+								<option value="05:00PM">05:00PM</option>
+								<option value="05:30PM">05:30PM</option>
+								<option value="06:00PM">06:00PM</option>
+								<option value="06:30PM">06:30PM</option>
+								<option value="07:00PM">07:00PM</option>
+								<option value="07:30PM">07:30PM</option>
+								<option value="08:00PM">08:00PM</option>
+								<option value="08:30PM">08:30PM</option>
+								<option value="09:00PM">09:00PM</option>
+								<option value="09:30PM">09:30PM</option>
+								<option value="10:00PM">10:00PM</option>
+							</select>
+
+						</div>
+						<span
+							ng-show="scheduleVisit.toTime.$dirty && scheduleVisit.toTime.$invalid">
+							<span ng-show="scheduleVisit.toTime.$error.required"
+							class="error">Please Enter to time</span>
+						</span>
+					</div>
+					<div class="col-sm-4">
+						<label for="inputsm" class="labelInput">Site Address<span
+							class="req">*</span></label></br> <label for="inputsm" class="labelInput"
+							style="margin-right: -68px; margin-top: 11px;"><i
+							ng-click="site=false;visit=true; getid(newVisit)"
+							class="fa fa-search" style="font-size: 13px;"><md-tooltip>
+								<span class="">Lookup site</span></md-tooltip></i></label>
+					</div>
+					<div class="col-sm-8">
+						<div class="form-group">
+							<textarea type="text" rows="4" class="form-control input-sm"
+								ng-disabled="statusOfDisabeled" id="siteAddress"
+								name="siteAddressSelected"
+								ng-model="newVisit.siteAddressSelected" required> </textarea>
+							<span
+								ng-show="scheduleVisit.siteAddressSelected.$dirty && scheduleVisit.siteAddressSelected.$invalid">
+								<span
+								ng-show="scheduleVisit.siteAddressSelected.$error.required"
+								class="error">Please Enter Address</span>
+							</span>
+						</div>
+					</div>
+
+					<div class="col-sm-4">
+						<label for="inputsm" class="labelInput">City<span
+							class="req">*</span></label>
+					</div>
+					<div class="col-sm-8">
+						<div class="form-group">
+							<input type="text" class="form-control input-sm"
+								id="siteCitySelected" ng-disabled="statusOfDisabeled"
+								name="siteCitySelected" ng-model="newVisit.siteCitySelected">
+							<span
+								ng-show="scheduleVisit.siteCitySelected.$dirty && scheduleVisit.siteCitySelected.$invalid"
+								required> <span
+								ng-show="scheduleVisit.siteCitySelected.$error.required"
+								class="error">Please Enter City</span>
+							</span>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="col-md-12">
+					<div align="center" style="margin-bottom: 10px;">
+						<button type="button" style="margin-top: 10px;"
+							ng-click="cancel()" class="btn btn-deva">Cancel</button>
+						<button type="button" style="margin-top: 10px;"
+							ng-disabled="scheduleVisit.$invalid" ng-click="addNewVisit()"
+							class="btn btn-deva">Save</button>
+						<button type="button" style="margin-top: 10px;"
+							ng-disabled="scheduleVisit.$invalid" ng-click="addNewVisitNew()"
+							class="btn btn-deva">Save & New</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</form>
+</div>
+
+<!--  add SITE-->
+
+<div class="container-fluid" ng-init="site=true;btn=true;btn1=false;"
+	ng-hide="site">
+	<form name="newClient" novalidate autocomplete="off"
+		ng-init="hideshow=false;">
+		<br>
+		<center>
+			<div class="panel panel-deva" style="width: 100%; margin-left: 0px;">
+				<div class="panel-heading" style="font-size: 15px;">
+					View Site <i class="fa fa-plus-square" data-toggle="modal"
+						data-target="#newSite"><md-tooltip> <span
+							class="">Add Site</span></md-tooltip></i>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-sm-4">
+							<div class="col-sm-4">
+								<label for="inputsm" class="labelInput">Client Name<span
+									class="req">*</span></label>
+							</div>
+							<div class="col-sm-2">
+								<div class="form-group">
+									<input type="text" class="form-control input-sm" id="clientID"
+										ng-disabled="true" name="clientID"
+										ng-model="newVisit.clientID" style="width: 43px;">
+								</div>
+							</div>
+
+							<div class="col-sm-6">
+								<div class="form-group">
+									<input type="text" class="form-control input-sm"
+										id="clientName" disabled name="clientName"
+										ng-model="newVisit.clientName" maxlength="46"
+										ng-maxlength="45" required> <span
+										ng-show="newClient.clientName.$dirty && newClient.clientName.$invalid">
+										<span ng-show="newClient.clientName.$error.required"
+										class="error">Please Enter Name</span> <span
+										ng-show="newClient.clientName.$error.maxlength" class="error">Enter
+											Maximum 45 char</span>
+									</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4"></div>
+						<div class="col-sm-4"></div>
+
+					</div>
+
+
+					<!--                               First row                                      -->
+					<div class="row" id="createRow">
+						<!--First Colum start  -->
+
+						<div class="col-sm-4 bord" ng-repeat="rw in addressList">
+							<!-- Site address start -->
+							<ng-form name="viewSite1">
+							<div class="col-sm-2"></div>
+							<div class="col-sm-2"></div>
+							<div class="col-sm-2">
+								<input type="checkbox" name="checked" ng-model="rw.checked"
+									style="margin-left: 28px;"
+									ng-click="updateSelection($index, addressList,rw);">
+							</div>
+							<div class="col-sm-5">
+								<label for="inputsm" class="labelInput" style="float: left;"
+									ng-show="$index==0">Reg Office Address</label> <label
+									for="inputsm" class="labelInput" style="float: left;"
+									ng-show="$index!=0">Site {{$index}}</label>
+							</div>
+							<div class="col-sm-1" ng-show="$index!=0">
+
+								<span " class="fa fa-trash-o" ng-click="deleteAddress(rw)"
+									style="font-size: 16px; margin-left: -12px; -webkit-text-fill-color: red;"><md-tooltip>
+									<span class="">Delete site</span></md-tooltip></span>
+							</div>
+							<div class="col-sm-4">
+								<label for="inputsm" class="labelInput">Address<span
+									class="req">*</span></label>
+							</div>
+							<div class="col-sm-8">
+								<div class="form-group">
+									<textarea type="text" class="form-control" name="siteAddress"
+										ng-disabled="btn" ng-model="rw.siteAddress" maxlength="46"
+										ng-maxlength="45" style="margin-bottom: -12px;" required></textarea>
+									<span style="float: left; margin-top: 11px;"
+										ng-show="viewSite1.siteAddress.$dirty && viewSite1.siteAddress.$invalid">
+										<span ng-show="viewSite1.siteAddress.$error.required"
+										class="error">Please Enter Name</span> <span
+										ng-show="viewSite1.siteAddress.$error.maxlength" class="error">Enter
+											Maximum 45 char</span>
+									</span>
+								</div>
+							</div>
+							<div class="col-sm-4">
+								<label for="inputsm" class="labelInput">City<span
+									class="req">*</span></label>
+							</div>
+							<div class="col-sm-8">
+								<div class="form-group">
+									<input type="text" class="form-control input-sm"
+										ng-disabled="btn" name="siteCity" ng-model="rw.siteCity"
+										maxlength="46" style="margin-bottom: -12px;" ng-maxlength="45"
+										required> <span style="float: left; margin-top: 11px;"
+										ng-show="viewSite1.siteCity.$dirty && viewSite1.siteCity.$invalid">
+										<span ng-show="viewSite1.siteCity.$error.required"
+										class="error">Please enter city</span> <span
+										ng-show="viewSite1.siteCity.$error.maxlength" class="error">Enter
+											Maximum 45 char</span>
+									</span>
+								</div>
+
+							</div>
+
+							<div class="col-sm-4">
+								<label for="inputsm" class="labelInput">Contact Person<span
+									class="req">*</span></label>
+							</div>
+							<div class="col-sm-8">
+								<div class="form-group">
+									<input type="text" class="form-control input-sm"
+										style="margin-bottom: -12px;" ng-disabled="btn"
+										name="contactPerson" ng-model="rw.contactPerson"
+										maxlength="46" ng-maxlength="45" required> <span
+										style="float: left; margin-top: 11px;"
+										ng-show="viewSite1.contactPerson.$dirty && viewSite1.contactPerson.$invalid">
+										<span ng-show="viewSite1.contactPerson.$error.required"
+										class="error">Please enter contact person </span> <span
+										ng-show="viewSite1.contactPerson.$error.maxlength"
+										class="error">Enter Maximum 45 char</span>
+									</span>
+								</div>
+
+							</div>
+							<div class="col-sm-4">
+								<label for="inputsm" class="labelInput">Mobile<span
+									class="req">*</span></label>
+							</div>
+							<div class="col-sm-8">
+								<div class="form-group">
+									<input type="number" class="form-control input-sm"
+										style="margin-bottom: -12px;" ng-disabled="btn"
+										name="mobileNO" ng-model="rw.mobileNO" minlength="10"
+										ng-maxlength="10" required> <span
+										style="float: left; margin-top: 11px;"
+										ng-show="viewSite1.mobileNO.$dirty && viewSite1.mobileNO.$invalid">
+										<span ng-show="viewSite1.mobileNO.$error.required"
+										class="error">Please Enter Mobile Number</span> <span
+										ng-show="viewSite1.mobileNO.$error.minlength" class="error">Mobile
+											Number Should Be 10 Digit</span> <span
+										ng-show="viewSite1.mobileNO.$error.maxlength" class="error">Mobile
+											Number Should Be 10 Digit</span>
+									</span>
+								</div>
+
+							</div>
+							<!-- Site address end --> </ng-form>
+
+						</div>
+						<div id="target"></div>
+						<!--                               First row    end                                -->
+
+
+
+						<div class="col-md-12">
+
+							<div align="center" style="margin-bottom: 10px;">
+								<button type="button" style="margin-top: 10px;"
+									ng-click="site=true;visit=false;" ng-hide="btn1"
+									class="btn btn-deva">Cancel</button>
+
+								<!-- Edit cancel -->
+								<button type="button" style="margin-top: 10px;"
+									ng-click="btn=true;btn1=false;" ng-hide="btn"
+									class="btn btn-deva">Cancel</button>
+								<button type="button" style="margin-top: 10px;"
+									ng-click="btn=false;btn1=true;" ng-hide="btn1"
+									class="btn btn-deva">Edit</button>
+								<button type="button" style="margin-top: 10px;" ng-hide="btn" ng-disabled="newClient.$invalid"
+									ng-click="updateSite()" class="btn btn-deva">Save</button>
+								<button type="button" style="margin-top: 10px;"
+									ng-click="site=true;visit=false;" ng-show="hideshow"
+									class="btn btn-deva">Select</button>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+	</form>
+</div>
+
+<!-- for all dynamic popup -->
+<div id="popup" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-sm">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header header-color">
+
+				<h4 class="modal-title" style="text-align: center;">Success</h4>
+			</div>
+			<div class="modal-body">
+				<center>{{message}}</center>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default popupbtn"
+					data-dismiss="modal">OK</button>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<!-- for all dynamic popup2 -->
+<div id="popup2" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-sm">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header header-color">
+
+				<h4 class="modal-title" style="text-align: center;">Success</h4>
+			</div>
+			<div class="modal-body">
+				<center>{{message}}</center>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default popupbtn"
+					data-dismiss="modal" ng-click="clientList()">OK</button>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+
+<div id="newSite" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-sm wid">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header header-color">
+
+				<h4 class="modal-title" style="text-align: center;">Add Site</h4>
+			</div>
+			<div class="modal-body">
+				<form name="newSite1">
+
+					<div class="form-group">
+						<div class="input-group-sm">
+							<label>Address<span class="req">*</span></label>
+							<textarea type="text" ng-rows="6" class="form-control"
+								name="siteAddress" ng-model="newSite.siteAddress"
+								required="required" ng-maxlength="165"></textarea>
+							<span
+								ng-show="newSite1.siteAddress.$dirty &&newSite1.siteAddress.$invalid">
+								<span ng-show="newSite1.siteAddress.$error.required"
+								class="error">Please enter address</span> <span
+								ng-show="newSite1.siteAddress.$error.maxlength" class="error">Enter
+									Maximum 160 char</span>
+							</span>
+
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="input-group-sm">
+							<label>City<span class="req">*</span></label> <input type="text"
+								class="form-control" name="siteCity" ng-model="newSite.siteCity"
+								required ng-maxlength="160"> <span
+								ng-show="newSite1.siteCity.$dirty &&newSite1.siteCity.$invalid">
+								<span ng-show="newSite1.siteCity.$error.required" class="error">Please
+									enter address</span> <span
+								ng-show="newSite1.siteCity.$error.maxlength" class="error">Enter
+									Maximum 160 char</span>
+							</span>
+						</div>
+
+					</div>
+					<div class="form-group">
+						<div class="input-group-sm">
+							<label>Contact Person<span class="req">*</span></label> <input
+								type="text" class="form-control" name="contactPerson"
+								ng-model="newSite.contactPerson" required="required"
+								ng-maxlength="45"> <span
+								ng-show="newSite1.contactPerson.$dirty && newSite1.contactPerson.$invalid">
+								<span ng-show="newSite1.contactPerson.$error.required"
+								class="error">Enter contact person</span> <span
+								ng-show="newSite1.contactPerson.$error.maxlength" class="error">Enter
+									maximum 45 character</span>
+							</span>
+						</div>
+
+					</div>
+					<div class="form-group">
+						<div class="input-group-sm">
+							<label>Mobile<span class="req">*</span></label> <input
+								type="number" class="form-control" name="mobileNO"
+								ng-model="newSite.mobileNO" required="required"
+								ng-maxlength="10" ng-minlength="10"> <span
+								ng-show="newSite1.mobileNO.$dirty && newSite1.mobileNO.$invalid">
+								<span ng-show="newSite1.mobileNO.$error.required" class="error">Enter
+									mobile no</span> <span ng-show="newSite1.mobileNO.$error.maxlength"
+								class="error">Mobile no should be 10 digit</span> <span
+								ng-show="newSite1.mobileNO.$error.minlength" class="error">Mobile
+									no should be 10 digit</span>
+							</span>
+						</div>
+
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-deva" data-dismiss="modal"
+					ng-disabled="newSite1.$invalid" style="width: 64px;"
+					ng-click="addSite()">Add</button>
+
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+
+<div id="deleteSite" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-sm">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header header-color" style="background: red;">
+
+				<h4 class="modal-title" style="text-align: center;">Delete Site</h4>
+			</div>
+			<div class="modal-body">
+				<center>Are you sure you want to delete the site?</center>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-deva" data-dismiss="modal"
+					style="background-color: darkgrey;">No</button>
+				<button type="button" class="btn btn-deva" data-dismiss="modal"
+					style="background-color: red;" style="width: 64px;"
+					ng-click="removeElement()">Yes</button>
+
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+
+
+<div id="saveSite" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-sm">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header header-color">
+
+				<h4 class="modal-title" style="text-align: center;">Update Site</h4>
+			</div>
+			<div class="modal-body">
+				<center>Site update successfully</center>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-deva " data-dismiss="modal">Ok</button>
+
+
+			</div>
+		</div>
+
+	</div>
+</div>
+<!-- for all dynamic popup -->
+<div id="popup" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-sm">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header header-color">
+
+				<h4 class="modal-title" style="text-align: center;">Success</h4>
+			</div>
+			<div class="modal-body">
+				<center>{{msg}}</center>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default popupbtn"
+					data-dismiss="modal">Ok</button>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<!-- for all dynamic popup2 -->
+<div id="popup2" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-sm">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header header-color">
+
+				<h4 class="modal-title" style="text-align: center;">Success</h4>
+			</div>
+			<div class="modal-body">
+				<center>{{message}}</center>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default popupbtn"
+					data-dismiss="modal">Close</button>
+			</div>
+		</div>
+
+	</div>
+</div>
+<div id="siteAdd" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-sm">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header header-color">
+
+				<h4 class="modal-title" style="text-align: center;">Success</h4>
+			</div>
+			<div class="modal-body">
+				<center>{{siteAddmsg}}</center>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default popupbtn"
+					data-dismiss="modal">Ok</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="siteDelete" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-sm">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header header-color">
+
+				<h4 class="modal-title" style="text-align: center;">Success</h4>
+			</div>
+			<div class="modal-body">
+				<center>Site deleted successfully</center>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default popupbtn"
+					ng-click="relod()" data-dismiss="modal">Ok</button>
+			</div>
+		</div>
+
+	</div>
+</div>
+<!--Save new  -->
+<div id="saveNew" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-sm">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header header-color">
+
+				<h4 class="modal-title" style="text-align: center;">Success</h4>
+			</div>
+			<div class="modal-body">
+				<center>Visit scheduled successfully</center>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default popupbtn"
+					data-dismiss="modal" ng-click="relod()">Ok</button>
+			</div>
+		</div>
+
+	</div>
+</div>
+<!--Save new  -->
+<div id="save" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-sm">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header header-color">
+
+				<h4 class="modal-title" style="text-align: center;">Success</h4>
+			</div>
+			<div class="modal-body">
+				<center>Visit scheduled successfully</center>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default popupbtn"
+					data-dismiss="modal" ng-click="visitpool()">Ok</button>
+			</div>
+		</div>
+
+	</div>
+</div>
