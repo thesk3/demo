@@ -1,0 +1,98 @@
+.loader {
+  position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background:white;
+	color:black;
+}
+.loader--dot {
+      z-index: 9999;
+    top: 36%;
+    margin-left: 40%;
+    text-align: center;
+    animation-name: loader;
+    animation-timing-function: ease-in-out;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+       height: 14px;
+    width: 14px;
+    border-radius: 100%;
+    background-color: black;
+    position: absolute;
+    border: 2px solid white;
+}
+.loader--dot:first-child {
+  background-color: #F07D00;
+  animation-delay: 0.5s;
+}
+.loader--dot:nth-child(2) {
+  background-color: #F07D00;
+  animation-delay: 0.4s;
+}
+.loader--dot:nth-child(3) {
+  background-color: #00AA5B;
+  animation-delay: 0.3s;
+}
+.loader--dot:nth-child(4) {
+  background-color: #00AA5B;
+  animation-delay: 0.2s;
+}
+.loader--dot:nth-child(5) {
+  background-color: #DC2A1B;
+  animation-delay: 0.1s;
+}
+.loader--dot:nth-child(6) {
+  background-color: #DC2A1B;
+  animation-delay: 0s;
+}
+.loader--text {
+    font-size: 18px;
+        top: 42%;
+    /* margin-left: 40%; */
+    position: fixed;
+    left: -15px;
+    /* top: 25px; */
+    width: 100%;
+    height: 100%;
+    z-index: 9998;
+    background: white;
+    color: black;
+}
+.loader--text:after {
+  content: "Loading";
+  animation-name: loading-text;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes loader {
+  15% {
+    transform: translateX(0);
+  }
+  45% {
+    transform: translateX(230px);
+  }
+  65% {
+    transform: translateX(230px);
+  }
+  95% {
+    transform: translateX(0);
+  }
+}
+@keyframes loading-text {
+  0% {
+    content: "Loading";
+  }
+  25% {
+    content: "Loading.";
+  }
+  50% {
+    content: "Loading..";
+  }
+  75% {
+    content: "Loading...";
+  }
+}
