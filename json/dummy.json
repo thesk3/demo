@@ -1,0 +1,70 @@
+{
+"profileCreateFor":[
+    { "id": "1", "name": "Parent" },
+    { "id": "2", "name": "Brother" },
+    { "id": "3", "name": "Sister" },
+    { "id": "4", "name": "realetive" },
+    { "id": "5", "name": "Friend" },
+    { "id": "6", "name": "other" }
+],
+"YesOrNo":[
+    { "id": "1", "name": "Yes" },
+    { "id": "2", "name": "No" }
+],
+"maritialStatus":[
+    { "id": "1", "name": "Never married" },
+    { "id": "2", "name": "Widow" },
+    { "id": "3", "name": "Widower" },
+    { "id": "4", "name": "divorced" },
+    { "id": "5", "name": "No" }
+],
+
+"gender":[
+    { "id": "1", "name": "Male" },
+    { "id": "2", "name": "Female" }
+],
+"Religion":[
+    { "id": "1", "name": "Jain" },
+    { "id": "2", "name": "Hindu" },
+    { "id": "3", "name": "Buddha" },
+    { "id": "4", "name":  "Sikh" }
+],
+"cast":[
+    { "id": "1", "name": "Bramhin" },
+    { "id": "2", "name": "maratha" },
+    { "id": "3", "name": "sonar" },
+    { "id": "4", "name":  "kumhar" }
+],
+"Diet":[
+    { "id": "1", "name": "Dosnt matter" },
+    { "id": "2", "name": "Veg" },
+    { "id": "3", "name": "Nonveg" },
+    { "id": "4", "name":  "Vegan" }
+],"employmentType":[
+    { "id": "1", "name": "Dosnt matter" },
+    { "id": "2", "name": "Permanent" },
+    { "id": "3", "name": "Contract" },
+    { "id": "4", "name":  "Self Employed" }
+],"country":[
+    { "id": "1", "name": "india" },
+    { "id": "2", "name": "us" },
+    { "id": "3", "name": "uk" },
+    { "id": "4", "name":  "swiss" }
+],"Community":[
+    { "id": "1", "name": "Hindi" },
+    { "id": "2", "name": "Bengali" },
+    { "id": "3", "name": "Kanaada" },
+    { "id": "4", "name":  "tamiliyan" }
+]
+,"annualIncome":[
+    { "id": "1", "name": "Dosnt matter" },
+    { "id": "2", "name": "1L to 5L" },
+    { "id": "3", "name": "5L to 10L" },
+    { "id": "4", "name":  "10L to 15L" }
+],"languages":[
+    { "id": "1", "name": "Hindi" },
+    { "id": "2", "name": "Marathi" },
+    { "id": "3", "name": "English" },
+    { "id": "4", "name":  "French" }
+]
+}

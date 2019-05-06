@@ -1,0 +1,61 @@
+{
+    "aboutSelf": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo  commodo. Proin sodales pulvinar sic tempor.Nam fermentum, nulla luctus pharetra vulputate, felis",
+"basicDetails":{
+"email": "asd@gmail.com",
+"primaryMobile": "6666666666",
+"profileCreatedFor": "Friend",
+"secondaryMobile": "6666666666"
+                },
+
+
+"educationDetails":{
+"annualIncome": "7676",
+"country": "Indian",
+"education": "Bachelor of Engineering",
+"educationDetail": "Computer Science",
+"employmentType": "Goverment",
+"occupation": "fghfgh"},
+
+
+"familyBackground": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor.Nam fermentum, nulla luctus pharetra vulputate, felis",
+
+"horoscope":{
+"dob": "23 Apr  2019 ",
+"manglik": "yes",
+"nakshatra": "Jain",
+"placeOfBirth": "Jain",
+"rashi": "Jain",
+"time": "06:05"},
+
+"lifeStyle":{
+"diet": "Hindu",
+"drinks": "Jain",
+"familyValues": "Jain",
+"smoke": "Hindu"},
+
+"personalDetails":{
+"children": "No",
+"dob": "Tue Apr 09 2019",
+"gender": "Male",
+"maritalStatus": "Never married",
+"name": "Jhon Rodes",
+"height": 656,
+"weight": 5465},
+
+"religionDetails":{
+"caste": "Maratha",
+"motherTongue": "Marathi",
+"religion": "Jain",
+"community":"Wheatis"
+},
+
+"health":{
+    "height": 656,
+    "Weight": 44,
+    "skinTone": "dasd",
+    "bodyType": "Average",
+    "healthInformation": "fhgfh",
+    "disability": "fghf",
+    "glasses": "Yes"
+    }   
+}

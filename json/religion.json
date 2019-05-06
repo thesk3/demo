@@ -1,0 +1,11 @@
+{
+  "cars":[
+
+  { "id": "1", "name": "Jain" },
+    { "id": "2", "name": "Hindu" },
+    { "id": "3", "name": "Buddha" },
+    { "id": "4", "name":  "Sikh" }
+
+   
+]
+}
